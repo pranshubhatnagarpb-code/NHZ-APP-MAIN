@@ -40,9 +40,9 @@ export function Navigation() {
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img 
-              src="/src/assets/logo.png" 
-              alt="Nutrition hai Zaruri" 
+            <img
+              src="/headerlogo.png"
+              alt="Nutrition hai Zaruri"
               className="h-10 w-auto object-contain"
             />
           </Link>
