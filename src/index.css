@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nutrition App Design System - Wellness & Health Theme */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Wellness primary colors - Emerald green */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 159 57% 70%;
+    --primary-dark: 158 64% 42%;
+
+    /* Secondary colors - Fresh blue */
+    --secondary: 214 75% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 214 75% 75%;
+
+    /* Accent colors - Warm orange for CTA */
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 24 95% 65%;
+
+    /* Neutral colors */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Status colors */
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 158 64% 52%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
+    --shadow-large: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Dark mode - keep wellness colors */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 159 57% 70%;
+    --primary-dark: 158 64% 42%;
+
+    --secondary: 214 75% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 214 75% 75%;
+
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 24 95% 65%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 158 64% 52%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Custom button variants */
+  .btn-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    @apply text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-large);
+  }
+  
+  .btn-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    @apply text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .btn-accent:hover {
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Quiz card animations */
+  .quiz-card {
+    @apply bg-card border border-border rounded-2xl p-8 transition-all duration-500;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .quiz-card-enter {
+    @apply transform translate-x-full opacity-0;
+  }
+  
+  .quiz-card-active {
+    @apply transform translate-x-0 opacity-100;
+  }
+  
+  .quiz-card-exit {
+    @apply transform -translate-x-full opacity-0;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Hero section */
+  .hero-gradient {
+    @apply bg-gradient-to-br from-primary via-secondary to-accent;
+  }
+
+  /* Nutrition score circle */
+  .score-circle {
+    @apply relative w-32 h-32 rounded-full flex items-center justify-center;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    box-shadow: var(--shadow-large);
+  }
+}
