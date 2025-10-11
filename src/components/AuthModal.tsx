@@ -97,7 +97,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       } else {
         toast({
           title: "Account created!",
-          description: "Please check your email to verify your account.",
+          description: "You're now signed in.",
         });
         handleClose();
       }
@@ -168,7 +168,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <TabsContent value="signin" className="space-y-4">
             {error && (
               <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">
-                {error}
+                <div>{error}</div>
               </div>
             )}
 

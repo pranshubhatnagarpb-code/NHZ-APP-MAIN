@@ -58,6 +58,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  
+
   const refreshProfile = async () => {
     if (user) {
       await fetchProfile(user.id);
@@ -103,13 +105,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = async (email: string, password: string, fullName?: string) => {
     try {
-      const redirectUrl = `${window.location.origin}/`;
-      
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: redirectUrl,
           data: {
             full_name: fullName
           }
@@ -123,10 +122,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           variant: "destructive"
         });
       } else {
-        toast({
-          title: "Success!",
-          description: "Please check your email to confirm your account.",
-        });
+        // If email confirmations are disabled in Supabase, we can proceed to sign in immediately
+        const { error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
+        if (signInErr) {
+          toast({ title: "Signed up, but sign-in failed", description: signInErr.message, variant: "destructive" });
+        } else {
+          toast({ title: "Account created", description: "You're now signed in." });
+        }
       }
 
       return { error };
