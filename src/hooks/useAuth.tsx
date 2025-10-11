@@ -23,6 +23,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
   signInWithGoogle: () => Promise<{ error: any }>;
+  linkWithGoogle: () => Promise<{ error: any }>;
   sendOTP: (phoneOrEmail: string) => Promise<{ error: any }>;
   verifyOTP: (phoneOrEmail: string, token: string) => Promise<{ error: any }>;
   updateProfile: (updates: Partial<Profile>) => Promise<{ error: any }>;
@@ -187,11 +188,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signInWithGoogle = async () => {
     try {
       const redirectUrl = `${window.location.origin}/`;
-      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: redirectUrl
+          redirectTo: redirectUrl,
+          queryParams: { prompt: 'consent' }
         }
       });
 
@@ -207,6 +208,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch (error: any) {
       toast({
         title: "Google Sign In Error",
+        description: error.message,
+        variant: "destructive"
+      });
+      return { error };
+    }
+  };
+
+  const linkWithGoogle = async () => {
+    try {
+      const redirectUrl = `${window.location.origin}/`;
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: redirectUrl,
+          queryParams: { prompt: 'consent' }
+        }
+      });
+
+      if (error) {
+        toast({
+          title: "Google Link Error",
+          description: error.message,
+          variant: "destructive"
+        });
+      }
+
+      return { error };
+    } catch (error: any) {
+      toast({
+        title: "Google Link Error",
         description: error.message,
         variant: "destructive"
       });
@@ -358,6 +389,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signIn,
     signOut,
     signInWithGoogle,
+    linkWithGoogle,
     sendOTP,
     verifyOTP,
     updateProfile,

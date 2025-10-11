@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { Menu, X, User, LogOut } from 'lucide-react';
+import { Menu, X, User, LogOut, Link2 } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import { AuthModal } from '@/components/AuthModal';
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const { user, profile, signOut, loading } = useAuth();
+  const { user, profile, signOut, loading, linkWithGoogle } = useAuth();
   const location = useLocation();
 
   const navItems = [
@@ -84,6 +84,11 @@ export function Navigation() {
                       {user.email}
                     </p>
                   </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => linkWithGoogle()} className="cursor-pointer">
+                    <Link2 className="mr-2 h-4 w-4" />
+                    <span>Connect Google</span>
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />

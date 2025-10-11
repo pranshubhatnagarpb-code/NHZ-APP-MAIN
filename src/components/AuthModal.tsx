@@ -90,6 +90,10 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           description: signUpError.message || 'Failed to sign up',
           variant: "destructive"
         });
+        const msg = (signUpError.message || '').toLowerCase();
+        if (msg.includes('already') || msg.includes('exists')) {
+          setAuthMode('signin');
+        }
       } else {
         toast({
           title: "Account created!",
