@@ -72,25 +72,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setSession(session);
         setUser(session?.user ?? null);
 
+        // Detect Supabase password recovery flow explicitly
+        if (event === 'PASSWORD_RECOVERY') {
+          sessionStorage.setItem('isPasswordRecovery', 'true');
+        }
+
         if (session?.user) {
-          // Check if this is a password reset authentication
-          const currentPath = window.location.pathname;
-          const isPasswordResetAuth = currentPath !== '/auth/reset-password' &&
-                                     !session.user.email_confirmed_at;
-
-          if (isPasswordResetAuth) {
-            // Store a flag to indicate password reset authentication
-            sessionStorage.setItem('passwordResetAuth', 'true');
-            // The app will handle navigation in a component that has router context
-          }
-
           // Defer profile fetch to avoid potential deadlocks
           setTimeout(() => {
             fetchProfile(session.user.id);
           }, 0);
         } else {
           setProfile(null);
-          sessionStorage.removeItem('passwordResetAuth');
+          sessionStorage.removeItem('isPasswordRecovery');
         }
 
         setLoading(false);

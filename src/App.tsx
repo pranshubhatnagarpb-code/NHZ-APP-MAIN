@@ -16,14 +16,20 @@ import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
-// Component to handle password reset navigation
+// Component to handle password reset navigation (via Supabase magic link)
 function PasswordResetHandler() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isPasswordResetAuth = sessionStorage.getItem('passwordResetAuth');
-    if (isPasswordResetAuth) {
-      sessionStorage.removeItem('passwordResetAuth');
+    // Supabase recovery can come as #access_token&...&type=recovery or we set a flag on event
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    const hasRecoveryInHash = /type=recovery/.test(hash) || /type=recovery/.test(search);
+    const isPasswordRecovery = sessionStorage.getItem('isPasswordRecovery') === 'true';
+
+    if (hasRecoveryInHash || isPasswordRecovery) {
+      // Clean flag to avoid loops
+      sessionStorage.removeItem('isPasswordRecovery');
       navigate('/auth/reset-password');
     }
   }, [navigate]);
