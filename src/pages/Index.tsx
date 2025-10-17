@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import LandingPage from "@/components/LandingPage";
 import HealthQuiz from "@/components/HealthQuiz";
 import UserRegistration from "@/components/UserRegistration";
@@ -35,7 +35,6 @@ interface UserData {
 
 const Index = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<AppStep>("landing");
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -120,7 +119,7 @@ const Index = () => {
   }, [searchParams, setSearchParams, isLoadingKYC, user, toast]);
 
   const handleStartQuiz = () => {
-    navigate('/?action=quiz');
+    setCurrentStep("quiz");
   };
 
   const handleQuizComplete = async (data: QuizData) => {
@@ -173,11 +172,11 @@ const Index = () => {
   };
 
   const handleBookConsultation = () => {
-    navigate('/?action=booking');
+    setCurrentStep("booking");
   };
 
   const handleBookAppointment = () => {
-    navigate('/?action=booking');
+    setCurrentStep("booking");
   };
 
   const handleJoinWhatsApp = () => {

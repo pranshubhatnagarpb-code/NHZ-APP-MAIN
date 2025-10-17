@@ -188,6 +188,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           description: error.message,
           variant: "destructive"
         });
+      } else {
+        // Clear localStorage to ensure session is fully removed
+        localStorage.removeItem('sb-zyfwlytwurfmwmmhmdov-auth-token');
+        localStorage.removeItem('supabase.auth.token');
+        // Force refresh the page or reset state if needed
+        window.location.reload(); // Optional: to ensure clean state
       }
     } catch (error: any) {
       toast({
