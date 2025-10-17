@@ -22,7 +22,7 @@ export default function About() {
       label: "Happy Clients Transformed"
     },
     {
-      icon: <Clock className="w-6 h-6 text-secondary" />,
+      icon: <Clock className="w-6 h-6 text-primary" />,
       number: "10+",
       label: "Years of Experience"
     },
@@ -82,20 +82,20 @@ export default function About() {
               <Badge className="bg-white/20 text-white mb-4">
                 About Dr. Kirti Jain
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight drop-shadow-lg">
                 Transforming Lives Through
-                <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
                   Science-Based Nutrition
                 </span>
               </h1>
-              <p className="text-xl mb-8 text-white/90 leading-relaxed">
-                With over a decade of expertise in clinical nutrition and a passion for holistic wellness, 
+              <p className="text-xl mb-8 text-white/90 leading-relaxed drop-shadow-md">
+                With over 19 years of expertise in clinical nutrition and a passion for holistic wellness, 
                 Dr. Kirti Jain has helped thousands of individuals achieve their health goals through 
                 personalized, sustainable nutrition strategies.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="/?action=booking">
-                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto">
+                  <Button size="lg" className="btn-hero">
                     Book Consultation
                   </Button>
                 </a>
@@ -104,7 +104,7 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button size="lg" variant="outline" className="border-white text-primary bg-white hover:bg-white/90 w-full sm:w-auto">
+                  <Button size="lg" className="btn-hero">
                     Join Community
                   </Button>
                 </a>
@@ -166,7 +166,7 @@ export default function About() {
             <div className="space-y-6">
               <Card className="shadow-soft border-0">
                 <CardContent className="p-6">
-                  <Target className="w-8 h-8 text-primary mb-4" />
+                  <Target className="w-8 h-8 text-secondary mb-4" />
                   <h3 className="font-semibold text-lg mb-2">Mission</h3>
                   <p className="text-muted-foreground">
                     To make evidence-based nutrition accessible to everyone, empowering individuals 
@@ -186,46 +186,6 @@ export default function About() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Qualifications Section */}
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Education & Certifications
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Continuously advancing knowledge through formal education and professional certifications 
-              to provide the highest quality nutrition guidance.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {qualifications.map((qual, index) => (
-              <Card key={index} className="shadow-soft border-0 hover:shadow-medium transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <GraduationCap className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-foreground mb-1">
-                        {qual.degree}
-                      </h3>
-                      <p className="text-muted-foreground mb-2">
-                        {qual.institution}
-                      </p>
-                      <Badge variant="outline" className="text-xs">
-                        {qual.year}
-                      </Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
@@ -276,7 +236,7 @@ export default function About() {
             </div>
             
             <div className="space-y-4">
-              <Target className="w-12 h-12 text-secondary mx-auto" />
+              <Target className="w-12 h-12 text-primary mx-auto" />
               <h3 className="text-xl font-semibold text-foreground">Personalized Solutions</h3>
               <p className="text-muted-foreground">
                 No one-size-fits-all approach. Every nutrition plan is tailored to your 
@@ -306,7 +266,7 @@ export default function About() {
               </Button>
             </a>
             <a href="/?action=booking">
-              <Button size="lg" variant="outline">
+              <Button size="lg" className="btn-hero">
                 Schedule Consultation
               </Button>
             </a>

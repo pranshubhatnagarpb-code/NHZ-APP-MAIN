@@ -22,8 +22,7 @@ interface AuthContextType {
   signUp: (email: string, password: string, fullName?: string) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
-  signInWithGoogle: () => Promise<{ error: any }>;
-  linkWithGoogle: () => Promise<{ error: any }>;
+  resetPassword: (email: string) => Promise<{ error: any }>;
   sendOTP: (phoneOrEmail: string) => Promise<{ error: any }>;
   verifyOTP: (phoneOrEmail: string, token: string) => Promise<{ error: any }>;
   updateProfile: (updates: Partial<Profile>) => Promise<{ error: any }>;
@@ -72,16 +71,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-        
+
         if (session?.user) {
+          // Check if this is a password reset authentication
+          const currentPath = window.location.pathname;
+          const isPasswordResetAuth = currentPath !== '/auth/reset-password' &&
+                                     !session.user.email_confirmed_at;
+
+          if (isPasswordResetAuth) {
+            // Store a flag to indicate password reset authentication
+            sessionStorage.setItem('passwordResetAuth', 'true');
+            // The app will handle navigation in a component that has router context
+          }
+
           // Defer profile fetch to avoid potential deadlocks
           setTimeout(() => {
             fetchProfile(session.user.id);
           }, 0);
         } else {
           setProfile(null);
+          sessionStorage.removeItem('passwordResetAuth');
         }
-        
+
         setLoading(false);
       }
     );
@@ -90,13 +101,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
+
       if (session?.user) {
         setTimeout(() => {
           fetchProfile(session.user.id);
         }, 0);
       }
-      
+
       setLoading(false);
     });
 
@@ -187,59 +198,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const signInWithGoogle = async () => {
+  const resetPassword = async (email: string) => {
     try {
-      const redirectUrl = `${window.location.origin}/`;
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: redirectUrl,
-          queryParams: { prompt: 'consent' }
-        }
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/reset-password`
       });
 
       if (error) {
         toast({
-          title: "Google Sign In Error",
+          title: "Reset Password Error",
           description: error.message,
           variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Reset Email Sent",
+          description: "Check your email for password reset instructions.",
         });
       }
 
       return { error };
     } catch (error: any) {
       toast({
-        title: "Google Sign In Error",
-        description: error.message,
-        variant: "destructive"
-      });
-      return { error };
-    }
-  };
-
-  const linkWithGoogle = async () => {
-    try {
-      const redirectUrl = `${window.location.origin}/`;
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: redirectUrl,
-          queryParams: { prompt: 'consent' }
-        }
-      });
-
-      if (error) {
-        toast({
-          title: "Google Link Error",
-          description: error.message,
-          variant: "destructive"
-        });
-      }
-
-      return { error };
-    } catch (error: any) {
-      toast({
-        title: "Google Link Error",
+        title: "Reset Password Error",
         description: error.message,
         variant: "destructive"
       });
@@ -390,8 +371,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signUp,
     signIn,
     signOut,
-    signInWithGoogle,
-    linkWithGoogle,
+    resetPassword,
     sendOTP,
     verifyOTP,
     updateProfile,

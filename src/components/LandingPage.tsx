@@ -14,35 +14,35 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
   const { user, profile } = useAuth();
   const testimonials = [
     {
-      name: "Priya Sharma",
-      text: "Lost 12kg in 3 months with Dr. Kirti's personalized plan. Amazing results!",
+      name: "Kanika Dhingra",
+      text: "I approached Kirti Jain, 5 months post-delivery. She planned foods that improved my breast milk production and at the same time helped me to shed extra Kilos.",
       rating: 5
     },
     {
-      name: "Rahul Gupta", 
-      text: "My diabetes is now under control thanks to the expert guidance.",
+      name: "Neelu Jain",
+      text: "It was the best experience I ever had after taking diet from Kirti Jain. I am so overwhelmed for her support and care she gave throughout my journey as I suffered from grade 3 Fatty Liver, history of Breast cancer, Vit. D and Vit B12 deficiency, severe acidity plus menopausal symptoms. Now after 10 months, I have lost 21 kgs along with no medical issues which I had earlier. Now I feel energetic and fully active after taking diet from Nutrition Hai Zaruri. Thank you NHZ team for your efforts.",
       rating: 5
     },
     {
-      name: "Anita Singh",
-      text: "Finally found a dietitian who understands Indian food preferences!",
+      name: "Shaurya Malik",
+      text: "I was suffering from High Blood Pressure & weight gain. Dietician Kirti Jain gave me special care and a Diet Plan with cheat meals.",
       rating: 5
     }
   ];
 
   const benefits = [
     {
-      icon: <Heart className="w-6 h-6 text-primary" />,
+      icon: <Heart className="w-6 h-6 text-secondary" />,
       title: "Personalized Nutrition Plans",
       description: "Tailored specifically for your body type, lifestyle, and health goals"
     },
     {
       icon: <Zap className="w-6 h-6 text-secondary" />,
       title: "Expert Consultation",
-      description: "Direct access to Dr. Kirti Jain's 10+ years of nutrition expertise"
+      description: "Direct access to Dr. Kirti Jain's 19+ years of nutrition expertise"
     },
     {
-      icon: <Shield className="w-6 h-6 text-accent" />,
+      icon: <Shield className="w-6 h-6 text-secondary" />,
       title: "WhatsApp Community",
       description: "Join our exclusive health community for ongoing support and motivation"
     }
@@ -53,28 +53,26 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
       {/* Hero Section */}
       <section className="hero-gradient text-white py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
             Discover Your Personalized
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
               Nutrition Score & Report
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Start your journey with Dr. Kirti Jain. Take a quick 10-question animated health quiz 
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
+            Start your journey with Dr. Kirti Jain. Take a quick 10-question health quiz 
             and get expert personalized advice instantly.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               onClick={onStartQuiz}
-              className="btn-hero text-lg"
-              size="lg"
+              size="lg" className="btn-hero"
             >
               Start Your Health Quiz
             </Button>
             <Button 
               onClick={onBookAppointment}
-              className="btn-accent text-lg"
-              size="lg"
+              size="lg" className="btn-hero"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Appointment
@@ -92,7 +90,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
               Join WhatsApp Community
             </a>
           </div>
-          <div className="mt-8 flex items-center justify-center gap-2 text-white/80">
+          <div className="mt-8 flex items-center justify-center gap-2 text-white/80 drop-shadow-sm">
             <Users className="w-5 h-5" />
             <span>Join 5,000+ happy clients who transformed their health</span>
           </div>
@@ -108,9 +106,11 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 About Nutrition hai Zaruri
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Driven by nutrition science, Nutrition hai Zaruri helps people transform their health 
-                through practical, expert guidance. We believe that proper nutrition is not just about 
+                Driven by nutrition science, Nutrition Hai Zaruri helps people transform their health
+                through practical, expert guidance. We believe that proper nutrition is not just about
                 eating right—it's about creating a sustainable lifestyle that brings lasting wellness.
+                With over 19 years of experience, Dr. Kirti Jain combines traditional wisdom with modern
+                nutrition science to help you achieve your health goals.
               </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -129,18 +129,19 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 Meet Dr. Kirti Jain
               </h3>
               <p className="text-muted-foreground mb-6">
-                Renowned Jaipur dietitian specializing in tailored Indian diets and holistic wellness. 
-                With over 10 years of experience and more than 5,000 success stories, Dr. Kirti combines 
-                traditional wisdom with modern nutrition science.
+                Renowned Jaipur dietitian specializing in tailored Indian diets and holistic wellness.
+                Post Graduate (M.Hsc) in Food and Nutrition with over 19 years of experience.
+                Has interned at Choithram Hospital (Indore) and Dr. Ram Manohar Lohia Hospital (Delhi),
+                and provided services at Pushpanjali Hospital (Agra).
               </p>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="bg-white rounded-lg p-4 shadow-soft">
-                  <div className="text-2xl font-bold text-primary">5,000+</div>
-                  <div className="text-sm text-muted-foreground">Happy Clients</div>
+                  <div className="text-2xl font-bold text-primary">19+</div>
+                  <div className="text-sm text-muted-foreground">Years Experience</div>
                 </div>
                 <div className="bg-white rounded-lg p-4 shadow-soft">
-                  <div className="text-2xl font-bold text-secondary">10+</div>
-                  <div className="text-sm text-muted-foreground">Years Experience</div>
+                  <div className="text-2xl font-bold text-primary">5,000+</div>
+                  <div className="text-sm text-muted-foreground">Happy Clients</div>
                 </div>
               </div>
             </div>
@@ -234,8 +235,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
             </Button>
             <Button 
               onClick={onBookAppointment}
-              variant="outline"
-              className="border-white text-foreground bg-white hover:bg-white/90 font-semibold py-4 px-8 rounded-xl text-lg"
+              className="border-white text-primary bg-white hover:bg-white/90 font-semibold py-4 px-8 rounded-xl text-lg"
               size="lg"
             >
               <Calendar className="mr-2 h-5 w-5" />

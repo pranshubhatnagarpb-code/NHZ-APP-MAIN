@@ -22,22 +22,22 @@ export default function Community() {
       description: "Get expert nutrition advice, healthy recipes, and wellness tips delivered daily to your WhatsApp."
     },
     {
-      icon: <Users className="w-6 h-6 text-secondary" />,
+      icon: <Users className="w-6 h-6 text-primary" />,
       title: "Peer Support Network",
       description: "Connect with like-minded individuals on similar health journeys for motivation and encouragement."
     },
     {
-      icon: <Heart className="w-6 h-6 text-accent" />,
+      icon: <Heart className="w-6 h-6 text-primary" />,
       title: "Recipe Sharing",
       description: "Discover and share healthy, delicious recipes that fit your dietary preferences and restrictions."
     },
     {
-      icon: <Zap className="w-6 h-6 text-success" />,
+      icon: <Zap className="w-6 h-6 text-primary" />,
       title: "Quick Q&A Sessions",
       description: "Get quick answers to your nutrition questions from Dr. Kirti and experienced community members."
     },
     {
-      icon: <Gift className="w-6 h-6 text-warning" />,
+      icon: <Gift className="w-6 h-6 text-primary" />,
       title: "Exclusive Content",
       description: "Access to exclusive meal plans, workout tips, and health challenges not available elsewhere."
     },
@@ -90,13 +90,13 @@ export default function Community() {
           <Badge className="bg-white/20 text-white mb-4">
             Free WhatsApp Community
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
             Join Our Thriving
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
               Health Community
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
             Connect with 2,500+ health enthusiasts, get daily nutrition tips, share recipes, 
             and stay motivated on your wellness journey with Dr. Kirti Jain's expert guidance.
           </p>
@@ -176,7 +176,7 @@ export default function Community() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto">
                 <span className="text-2xl font-bold text-white">1</span>
               </div>
               <h3 className="text-xl font-semibold text-foreground">Click to Join</h3>
@@ -198,7 +198,7 @@ export default function Community() {
             </div>
 
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto">
                 <span className="text-2xl font-bold text-white">3</span>
               </div>
               <h3 className="text-xl font-semibold text-foreground">Start Participating</h3>
@@ -299,7 +299,7 @@ export default function Community() {
             </a>
             <a
               href="/?action=quiz"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white/90 transition-all duration-300 border-2 border-white"
+              className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-105"
             >
               Start Health Quiz
             </a>

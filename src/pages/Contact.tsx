@@ -41,7 +41,7 @@ export default function Contact() {
 
   const contactMethods = [
     {
-      icon: <MessageCircle className="w-6 h-6 text-green-600" />,
+      icon: <MessageCircle className="w-6 h-6 text-primary" />,
       title: "WhatsApp",
       description: "Quick response within 2-4 hours",
       contact: "+91 9884315705",
@@ -58,7 +58,7 @@ export default function Contact() {
       link: "mailto:info@nutritionhaizaruri.com"
     },
     {
-      icon: <Phone className="w-6 h-6 text-secondary" />,
+      icon: <Phone className="w-6 h-6 text-primary" />,
       title: "Phone",
       description: "Direct consultation booking",
       contact: "+91 9884315705",
@@ -177,13 +177,13 @@ export default function Contact() {
           <Badge className="bg-white/20 text-white mb-4">
             Get In Touch
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
             Let's Start Your
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
               Health Transformation
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
             Ready to take the next step? Get in touch with Dr. Kirti Jain for personalized 
             nutrition guidance and start your journey to better health today.
           </p>
@@ -212,7 +212,7 @@ export default function Contact() {
                   <p className="font-medium text-foreground mb-4">{method.contact}</p>
                   <Button 
                     asChild 
-                    className={method.primary ? "bg-green-600 hover:bg-green-700" : ""}
+                    className={"bg-green-600 hover:bg-green-700"}
                     size="sm"
                   >
                     <a href={method.link} target="_blank" rel="noopener noreferrer">
@@ -337,7 +337,7 @@ export default function Contact() {
               <Card className="shadow-soft border-0">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-primary" />
+                    <Clock className="w-5 h-5 text-secondary" />
                     Office Hours
                   </CardTitle>
                 </CardHeader>
@@ -419,9 +419,8 @@ export default function Contact() {
               className="w-full sm:w-auto"
             >
               <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-primary bg-white hover:bg-white/90 w-full"
+                size="lg"  
+                className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto"
               >
                 Join WhatsApp Community
               </Button>

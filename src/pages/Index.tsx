@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import LandingPage from "@/components/LandingPage";
 import HealthQuiz from "@/components/HealthQuiz";
 import UserRegistration from "@/components/UserRegistration";
@@ -9,7 +9,7 @@ import BookingPayment from "@/components/BookingPayment";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 import { AuthModal } from "@/components/AuthModal";
-import { checkKYCStatus, fetchUserKYCData, fetchUserAppointments, AppointmentData } from "@/utils/kycDataHandler";
+import { checkKYCStatus, fetchUserKYCData, fetchUserAppointments, saveKYCData, AppointmentData } from "@/utils/kycDataHandler";
 
 type AppStep = "landing" | "quiz" | "registration" | "processing" | "dashboard" | "booking" | "success";
 
@@ -35,6 +35,7 @@ interface UserData {
 
 const Index = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<AppStep>("landing");
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -42,21 +43,22 @@ const Index = () => {
   const [isLoadingKYC, setIsLoadingKYC] = useState(true);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const { toast } = useToast();
-  const { user, session, loading: authLoading } = useAuth();
+  const { user, session, profile, loading: authLoading } = useAuth();
 
   // Check KYC status for returning users
   useEffect(() => {
     const checkReturningUser = async () => {
       if (authLoading) return;
-      
+
       if (!user || !session) {
         setIsLoadingKYC(false);
+        setCurrentStep("landing"); // Ensure landing page is shown for non-authenticated users
         return;
       }
 
       try {
         const { kycCompleted, userData: storedUserData } = await checkKYCStatus(user.id);
-        
+
         if (kycCompleted && storedUserData) {
           // Fetch existing KYC data and appointments
           const [kycResult, appointmentsResult] = await Promise.all([
@@ -69,15 +71,22 @@ const Index = () => {
             setUserData(storedUserData);
             setAppointments(appointmentsResult.data || []);
             setCurrentStep("dashboard");
-            
+
             toast({
               title: "Welcome back!",
               description: "Loading your personalized dashboard...",
             });
+          } else {
+            // KYC completed but no quiz data found, show landing
+            setCurrentStep("landing");
           }
+        } else {
+          // KYC not completed, show landing
+          setCurrentStep("landing");
         }
       } catch (error) {
         console.error("Error checking KYC status:", error);
+        setCurrentStep("landing"); // Fallback to landing on error
       } finally {
         setIsLoadingKYC(false);
       }
@@ -111,10 +120,10 @@ const Index = () => {
   }, [searchParams, setSearchParams, isLoadingKYC, user, toast]);
 
   const handleStartQuiz = () => {
-    setCurrentStep("quiz");
+    navigate('/?action=quiz');
   };
 
-  const handleQuizComplete = (data: QuizData) => {
+  const handleQuizComplete = async (data: QuizData) => {
     setQuizData(data);
     
     // If user is not authenticated, show auth modal (sign-up mode)
@@ -125,8 +134,32 @@ const Index = () => {
         description: "Create an account to save your results and continue.",
       });
     } else {
-      // User is authenticated, proceed to registration
-      setCurrentStep("registration");
+      // Check if user already has profile data
+      if (profile?.full_name && profile?.phone && profile?.email) {
+        // Use existing profile data and save
+        const existingUserData = {
+          fullName: profile.full_name,
+          phone: profile.phone,
+          email: profile.email,
+        };
+        setUserData(existingUserData);
+        
+        // Save the data
+        const { success, error } = await saveKYCData(user.id, data, existingUserData);
+        if (!success || error) {
+          toast({
+            title: "Error",
+            description: "Failed to save your information. Please try again.",
+            variant: "destructive"
+          });
+          return;
+        }
+        
+        setCurrentStep("processing");
+      } else {
+        // User is authenticated but no profile data, proceed to registration
+        setCurrentStep("registration");
+      }
     }
   };
 
@@ -140,11 +173,11 @@ const Index = () => {
   };
 
   const handleBookConsultation = () => {
-    setCurrentStep("booking");
+    navigate('/?action=booking');
   };
 
   const handleBookAppointment = () => {
-    setCurrentStep("booking");
+    navigate('/?action=booking');
   };
 
   const handleJoinWhatsApp = () => {

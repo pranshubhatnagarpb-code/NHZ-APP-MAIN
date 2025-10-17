@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { Menu, X, User, LogOut, Link2 } from 'lucide-react';
+import { Menu, X, User, LogOut, FileText } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import { AuthModal } from '@/components/AuthModal';
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const { user, profile, signOut, loading, linkWithGoogle } = useAuth();
+  const { user, profile, signOut, loading } = useAuth();
   const location = useLocation();
 
   const navItems = [
@@ -85,9 +85,11 @@ export function Navigation() {
                     </p>
                   </div>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => linkWithGoogle()} className="cursor-pointer">
-                    <Link2 className="mr-2 h-4 w-4" />
-                    <span>Connect Google</span>
+                  <DropdownMenuItem asChild>
+                    <Link to="/report" className="cursor-pointer">
+                      <FileText className="mr-2 h-4 w-4" />
+                      <span>Nutrition Report</span>
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
@@ -145,6 +147,14 @@ export function Navigation() {
                       <p className="font-medium">{profile?.full_name || 'User'}</p>
                       <p className="text-muted-foreground">{user.email}</p>
                     </div>
+                    <Link
+                      to="/report"
+                      className="block px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <FileText className="inline mr-2 h-4 w-4" />
+                      Nutrition Report
+                    </Link>
                     <Button
                       variant="outline"
                       className="w-full justify-start"
