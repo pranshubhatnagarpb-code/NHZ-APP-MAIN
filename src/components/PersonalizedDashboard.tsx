@@ -302,20 +302,20 @@ const PersonalizedDashboard = ({
   const hasPendingPayment = latestAppointment?.payment_status === 'pending';
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
+    <div className="min-h-screen bg-background py-4 sm:py-8 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
+        <div className="text-center mb-6 sm:mb-8 px-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 leading-tight">
             Hello {userData.fullName}! 👋
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             Your personalized nutrition report
           </p>
           <Button
             variant="outline"
             onClick={onRetakeQuiz}
-            className="mt-4"
+            className="mt-3 sm:mt-4 mobile-spacing min-h-[44px]"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Update My Health Information
@@ -336,29 +336,29 @@ const PersonalizedDashboard = ({
             </CardHeader>
             <CardContent className="space-y-6">
               {/* BMI Overview */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold text-primary mb-1">{healthyData.currentBMI}</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg min-w-0">
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1 break-words">{healthyData.currentBMI}</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Current BMI</div>
-                  <Badge variant={healthyData.isHealthy ? "default" : "outline"} className="mt-2 text-xs">
+                  <Badge variant={healthyData.isHealthy ? "default" : "outline"} className="mt-2 text-xs break-words">
                     {healthyData.isHealthy ? "Healthy Range" : healthyData.needsGain ? "Underweight" : "Overweight"}
                   </Badge>
                 </div>
 
-                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold text-success mb-1">18.5 - 24.9</div>
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg min-w-0">
+                  <div className="text-lg sm:text-2xl font-bold text-success mb-1 break-words">18.5 - 24.9</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Healthy BMI Range</div>
-                  <Badge className="mt-2 bg-success/10 text-success text-xs">Optimal</Badge>
+                  <Badge className="mt-2 bg-success/10 text-success text-xs break-words">Optimal</Badge>
                 </div>
 
-                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
-                  <div className={`text-xl sm:text-2xl font-bold mb-1 ${healthyData.weightDifference > 0 ? 'text-orange-600' : healthyData.weightDifference < 0 ? 'text-green-600' : ''}`}>
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg min-w-0">
+                  <div className={`text-lg sm:text-2xl font-bold mb-1 break-words ${healthyData.weightDifference > 0 ? 'text-orange-600' : healthyData.weightDifference < 0 ? 'text-green-600' : ''}`}>
                     {healthyData.weightDifference > 0 ? `-${healthyData.weightDifference}` : `${Math.abs(healthyData.weightDifference)}kg`}
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">
                     {healthyData.needsGain ? "To achieve your optimal weight" : "To achieve your optimal weight"}
                   </div>
-                  <Badge variant="outline" className="mt-2 text-xs">
+                  <Badge variant="outline" className="mt-2 text-xs break-words">
                     {healthyData.needsGain ? "Gain Weight" : "Lose Weight"}
                   </Badge>
                 </div>
@@ -368,9 +368,9 @@ const PersonalizedDashboard = ({
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-4">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">BMI Comparison</h4>
-                  <div className="flex justify-center items-end gap-4 sm:gap-8 h-24 sm:h-32">
+                  <div className="flex justify-center items-end gap-6 sm:gap-8 h-24 sm:h-32">
                     {/* Current BMI Silhouette */}
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center min-w-0">
                       <div className={`w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 transition-all duration-300 ${
                         healthyData.currentBMI < 18.5 ? 'border-red-400 bg-red-50' :
                         healthyData.currentBMI > 24.9 ? 'border-orange-400 bg-orange-50' :
@@ -394,12 +394,12 @@ const PersonalizedDashboard = ({
                           }`} /> {/* Torso - wider for fat, narrower for lean */}
                         </div>
                       </div>
-                      <div className="text-xs text-muted-foreground mt-2">Current</div>
-                      <div className="text-xs font-semibold">{healthyData.currentBMI}</div>
+                      <div className="text-xs text-muted-foreground mt-2 text-center">Current</div>
+                      <div className="text-xs font-semibold text-center">{healthyData.currentBMI}</div>
                     </div>
 
                     {/* Healthy BMI Silhouette */}
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center min-w-0">
                       <div className="w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 border-success bg-success/10">
                         <div className="w-full h-3/4 rounded-t-full bg-success/20 flex flex-col items-center justify-center gap-1">
                           {/* Lean body shape: head and narrow torso */}
@@ -407,8 +407,8 @@ const PersonalizedDashboard = ({
                           <div className="h-4 sm:h-6 w-3 sm:w-4 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
                         </div>
                       </div>
-                      <div className="text-xs text-muted-foreground mt-2">Healthy</div>
-                      <div className="text-xs font-semibold">18.5-24.9</div>
+                      <div className="text-xs text-muted-foreground mt-2 text-center">Healthy</div>
+                      <div className="text-xs font-semibold text-center">18.5-24.9</div>
                     </div>
                   </div>
                 </div>
@@ -416,9 +416,9 @@ const PersonalizedDashboard = ({
                 <div className="space-y-4">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">Weight Range for Your Height</h4>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">Minimum Healthy Weight</span>
-                      <span className="font-semibold">{healthyData.healthyWeightMin} kg</span>
+                    <div className="flex justify-between items-center text-sm px-2">
+                      <span className="text-muted-foreground flex-1 min-w-0">Minimum Healthy Weight</span>
+                      <span className="font-semibold ml-2">{healthyData.healthyWeightMin} kg</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <div
@@ -426,16 +426,16 @@ const PersonalizedDashboard = ({
                         style={{ width: `${Math.min(100, (healthyData.currentWeight / healthyData.healthyWeightMax) * 100)}%` }}
                       ></div>
                     </div>
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">Maximum Healthy Weight</span>
-                      <span className="font-semibold">{healthyData.healthyWeightMax} kg</span>
+                    <div className="flex justify-between items-center text-sm px-2">
+                      <span className="text-muted-foreground flex-1 min-w-0">Maximum Healthy Weight</span>
+                      <span className="font-semibold ml-2">{healthyData.healthyWeightMax} kg</span>
                     </div>
                   </div>
 
-                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200 mx-2">
                     <div className="flex items-start gap-2">
                       <Info className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <div className="text-xs text-blue-800">
+                      <div className="text-xs text-blue-800 leading-relaxed">
                         <p className="font-medium mb-1">Important Note:</p>
                         <p>BMI is a general indicator. Consult Dr. Kirti Jain for personalized health assessment considering muscle mass, bone density, and overall body composition.</p>
                       </div>
@@ -505,11 +505,11 @@ const PersonalizedDashboard = ({
             <CardContent>
               <div className="space-y-4">
                 {appointments.slice(0, 3).map((appointment) => (
-                  <div key={appointment.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Clock className="w-4 h-4 text-muted-foreground" />
-                        <span className="font-medium">
+                  <div key={appointment.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 border rounded-lg gap-3">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                        <Clock className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                        <span className="font-medium text-sm sm:text-base break-words">
                           {new Date(appointment.appointment_date).toLocaleDateString('en-IN', {
                             day: 'numeric',
                             month: 'long',
@@ -519,16 +519,16 @@ const PersonalizedDashboard = ({
                           })}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Badge variant={appointment.status === 'completed' ? 'default' : 'secondary'}>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant={appointment.status === 'completed' ? 'default' : 'secondary'} className="text-xs">
                           {appointment.status}
                         </Badge>
-                        <Badge variant={appointment.payment_status === 'completed' ? 'default' : 'outline'}>
+                        <Badge variant={appointment.payment_status === 'completed' ? 'default' : 'outline'} className="text-xs">
                           Payment: {appointment.payment_status}
                         </Badge>
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-center sm:text-right">
                       <div className="font-bold text-lg">₹{appointment.payment_amount}</div>
                     </div>
                   </div>
@@ -560,18 +560,18 @@ const PersonalizedDashboard = ({
         )}
 
         {/* CTA Section */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {!hasAppointments && (
-            <Card className="shadow-medium border-primary/20">
-              <CardContent className="p-6 text-center">
-                <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Book Personal Consultation</h3>
-                <p className="text-muted-foreground mb-4 text-sm">
+            <Card className="shadow-medium border-primary/20 card-mobile">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <Calendar className="w-10 sm:w-12 h-10 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
+                <h3 className="text-lg sm:text-xl font-bold mb-2 leading-tight">Book Personal Consultation</h3>
+                <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                   Get detailed guidance from Dr. Kirti Jain with a personalized nutrition plan
                 </p>
-                <Button 
+                <Button
                   onClick={onBookConsultation}
-                  className="btn-hero w-full"
+                  className="btn-hero w-full mobile-spacing min-h-[48px]"
                 >
                   Book Consultation - ₹999
                 </Button>
@@ -579,16 +579,16 @@ const PersonalizedDashboard = ({
             </Card>
           )}
 
-          <Card className={`shadow-medium border-secondary/20 ${!hasAppointments ? '' : 'md:col-span-2'}`}>
-            <CardContent className="p-6 text-center">
-              <MessageCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Join WhatsApp Community</h3>
-              <p className="text-muted-foreground mb-4 text-sm">
+          <Card className={`shadow-medium border-secondary/20 ${!hasAppointments ? '' : 'sm:col-span-2'} card-mobile`}>
+            <CardContent className="p-4 sm:p-6 text-center">
+              <MessageCircle className="w-10 sm:w-12 h-10 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold mb-2 leading-tight">Join WhatsApp Community</h3>
+              <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                 Connect with like-minded people and get daily health tips
               </p>
-              <Button 
+              <Button
                 onClick={() => window.open("https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL", "_blank")}
-                className="btn-hero w-full"
+                className="btn-hero w-full mobile-spacing min-h-[48px]"
               >
                 Join Community (Free)
               </Button>
@@ -597,9 +597,9 @@ const PersonalizedDashboard = ({
         </div>
 
         {/* Footer Note */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
-            This report is generated based on your responses. For detailed medical advice, 
+        <div className="text-center mt-6 sm:mt-8 px-2">
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            This report is generated based on your responses. For detailed medical advice,
             consult with Dr. Kirti Jain directly.
           </p>
         </div>

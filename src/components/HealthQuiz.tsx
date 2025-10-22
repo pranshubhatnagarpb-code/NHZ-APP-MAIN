@@ -150,9 +150,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 0:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(0)}
-              <h2 className="text-2xl font-bold text-center">What's your dietary preference?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your dietary preference?
+              </h2>
             </div>
 
             {/* Decorative icons in corners */}
@@ -180,9 +182,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 1:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(1)}
-              <h2 className="text-2xl font-bold text-center">What's your age?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your age?
+              </h2>
             </div>
 
             {/* Decorative icons in corners */}
@@ -209,9 +213,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 2:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(2)}
-              <h2 className="text-2xl font-bold text-center">What's your gender?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your gender?
+              </h2>
             </div>
             <RadioGroup value={quizData.gender} onValueChange={(value) => updateQuizData("gender", value)}>
               <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
@@ -228,9 +234,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 3:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(3)}
-              <h2 className="text-2xl font-bold text-center">Tell us about your physical stats</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                Tell us about your physical stats
+              </h2>
             </div>
 
             {/* Decorative measurement icons */}
@@ -272,9 +280,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(4)}
-              <h2 className="text-2xl font-bold text-center">What's your occupation?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your occupation?
+              </h2>
             </div>
             <RadioGroup value={quizData.occupation} onValueChange={(value) => updateQuizData("occupation", value)}>
               <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
@@ -295,9 +305,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 5:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(5)}
-              <h2 className="text-2xl font-bold text-center">How did you hear about us?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                How did you hear about us?
+              </h2>
             </div>
             <RadioGroup value={quizData.hearAbout} onValueChange={(value) => updateQuizData("hearAbout", value)}>
               <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
@@ -318,9 +330,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 6:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(6)}
-              <h2 className="text-2xl font-bold text-center">Any medical conditions? (Optional)</h2>
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-tight break-words max-w-full">
+                Any medical conditions? (Optional)
+              </h2>
             </div>
 
             {/* Decorative medical icons */}
@@ -334,15 +348,16 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
             </div>
 
             <p className="text-center text-muted-foreground">Select all that apply</p>
-            <div className="grid grid-cols-2 gap-3 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-2xl mx-auto">
               {medicalConditionOptions.map((condition) => (
-                <label key={condition} className="flex items-center space-x-2 p-2 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
+                <label key={condition} className="flex items-start space-x-2 p-2 sm:p-3 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                   <Checkbox
                     id={condition}
                     checked={quizData.medicalConditions.includes(condition)}
                     onCheckedChange={(checked) => updateMedicalConditions(condition, checked as boolean)}
+                    className="mt-0.5 flex-shrink-0"
                   />
-                  <span className="text-sm">{condition}</span>
+                  <span className="text-xs sm:text-sm leading-relaxed break-words">{condition}</span>
                 </label>
               ))}
             </div>
@@ -351,9 +366,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 7:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(7)}
-              <h2 className="text-2xl font-bold text-center">What's your skin type?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your skin type?
+              </h2>
             </div>
             <RadioGroup value={quizData.skinType} onValueChange={(value) => updateQuizData("skinType", value)}>
               {["Dry", "Normal", "Oily", "Acne", "Pigmentation"].map((type) => (
@@ -368,9 +385,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 8:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(8)}
-              <h2 className="text-2xl font-bold text-center">What's your hair type?</h2>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
+                What's your hair type?
+              </h2>
             </div>
             <RadioGroup value={quizData.hairType} onValueChange={(value) => updateQuizData("hairType", value)}>
               {["Dry", "Normal", "Oily", "Dandruff", "Itchy Scalp", "Hairfall"].map((type) => (
@@ -385,9 +404,11 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 9:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-4 px-2">
               {getQuestionIcon(9)}
-              <h2 className="text-2xl font-bold text-center">Any specific products you use?</h2>
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-tight break-words max-w-full">
+                Any specific products you use?
+              </h2>
             </div>
 
             {/* Decorative product icons */}
@@ -418,48 +439,48 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
 
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
+    <div className="min-h-screen bg-background py-4 sm:py-8 px-3 sm:px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-6 h-6 text-primary" />
-            <h1 className="text-2xl font-bold">Health Assessment Quiz</h1>
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
+            <Sparkles className="w-5 sm:w-6 h-5 sm:h-6 text-primary" />
+            <h1 className="text-xl sm:text-2xl font-bold">Health Assessment Quiz</h1>
           </div>
-          <p className="text-muted-foreground">{motivationalMessages[currentStep]}</p>
+          <p className="text-sm sm:text-base text-muted-foreground">{motivationalMessages[currentStep]}</p>
         </div>
 
 
         {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between text-sm text-muted-foreground mb-2">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex justify-between text-xs sm:text-sm text-muted-foreground mb-2">
             <span>Step {currentStep + 1} of {totalSteps}</span>
             <span>{Math.round(progress)}% Complete</span>
           </div>
-          <Progress value={progress} className="h-3" />
+          <Progress value={progress} className="h-2 sm:h-3" />
         </div>
 
 
         {/* Floating Icons Around Quiz */}
         <div className="relative">
           {/* Floating Heart Icon */}
-          <div className="absolute -top-8 -left-8 z-10 animate-float-heart">
-            <Heart className="w-8 h-8 text-red-400 drop-shadow-lg" />
+          <div className="absolute -top-6 sm:-top-8 -left-4 sm:-left-8 z-10 animate-float-heart">
+            <Heart className="w-6 sm:w-8 h-6 sm:h-8 text-red-400 drop-shadow-lg" />
           </div>
 
           {/* Floating Activity Icon */}
-          <div className="absolute -top-4 -right-8 z-10 animate-float-activity">
-            <Activity className="w-8 h-8 text-green-400 drop-shadow-lg" />
+          <div className="absolute -top-2 sm:-top-4 -right-4 sm:-right-8 z-10 animate-float-activity">
+            <Activity className="w-6 sm:w-8 h-6 sm:h-8 text-green-400 drop-shadow-lg" />
           </div>
 
           {/* Floating Water Drop Icon */}
-          <div className="absolute -bottom-6 -left-4 z-10 animate-float-water">
-            <Droplets className="w-8 h-8 text-blue-400 drop-shadow-lg" />
+          <div className="absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-4 z-10 animate-float-water">
+            <Droplets className="w-6 sm:w-8 h-6 sm:h-8 text-blue-400 drop-shadow-lg" />
           </div>
 
           {/* Quiz Card */}
           <Card className={`quiz-card ${isAnimating ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 shadow-large`}>
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-8">
               {renderStep()}
             </CardContent>
           </Card>
