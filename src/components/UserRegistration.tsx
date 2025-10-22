@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,7 +23,7 @@ interface UserRegistrationProps {
 
 // Validation schemas
 const emailSchema = z.string().trim().email({ message: "Invalid email address" }).max(255);
-const phoneSchema = z.string().trim().min(10, { message: "Phone must be at least 10 digits" }).max(15);
+const phoneSchema = z.string().trim().length(10, { message: "Phone must be exactly 10 digits" });
 const nameSchema = z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100);
 
 const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProps) => {
@@ -36,6 +36,13 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
   const [errors, setErrors] = useState<Partial<UserData>>({});
   const { toast } = useToast();
   const { user } = useAuth();
+
+  // Pre-fill email from authenticated user
+  useEffect(() => {
+    if (user?.email) {
+      setUserData(prev => ({ ...prev, email: user.email }));
+    }
+  }, [user]);
 
   const updateUserData = (field: keyof UserData, value: string) => {
     setUserData(prev => ({ ...prev, [field]: value }));
@@ -58,12 +65,7 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
       newErrors.phone = "Valid phone number required (10-15 digits)";
     }
     
-    try {
-      emailSchema.parse(userData.email);
-    } catch {
-      newErrors.email = "Valid email address required";
-    }
-    
+    // Email is pre-filled and read-only, no need to validate
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -71,8 +73,7 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
   const isFormValid = () => {
     return userData.fullName.trim() !== "" && 
            userData.phone.trim() !== "" && 
-           userData.email.trim() !== "" &&
-           userData.email.includes("@");
+           userData.email.trim() !== ""; // Email is pre-filled, just check it's not empty
   };
 
   const handleSubmit = async () => {
@@ -192,7 +193,13 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
                 value={userData.email}
                 onChange={(e) => updateUserData("email", e.target.value)}
                 className="text-base"
+                disabled={!!user?.email} // Disable if pre-filled from auth
               />
+              {user?.email && (
+                <p className="text-xs text-muted-foreground">
+                  Email from your account (cannot be changed here)
+                </p>
+              )}
               {errors.email && (
                 <p className="text-sm text-destructive">{errors.email}</p>
               )}

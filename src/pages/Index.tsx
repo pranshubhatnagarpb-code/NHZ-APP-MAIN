@@ -119,6 +119,16 @@ const Index = () => {
   }, [searchParams, setSearchParams, isLoadingKYC, user, toast]);
 
   const handleStartQuiz = () => {
+    if (!user) {
+      // User is not authenticated, show auth modal
+      setShowAuthModal(true);
+      toast({
+        title: "Sign In Required",
+        description: "Please sign in or create an account to take the health quiz.",
+        variant: "destructive"
+      });
+      return;
+    }
     setCurrentStep("quiz");
   };
 

@@ -4,6 +4,8 @@ import { Star, Users, CheckCircle, Heart, Zap, Shield, MessageCircle, Calendar }
 import { useAuth } from "@/hooks/useAuth";
 import { FAQ } from "@/components/FAQ";
 import SupportSection from "@/components/SupportSection";
+import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
+import SequentialTypewriter from "@/components/SequentialTypewriter";
 
 interface LandingPageProps {
   onStartQuiz: () => void;
@@ -51,7 +53,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 px-4">
+      <AnimatedLiquidBackground className="text-white py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
             Discover Your Personalized
@@ -59,20 +61,29 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
               Nutrition Score & Report
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
-            Start your journey with Dr. Kirti Jain. Take a quick 10-question health quiz 
-            and get expert personalized advice instantly.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="text-xl md:text-4xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
+            <SequentialTypewriter
+              segments={[
+                "Hello!",
+                "Take our 10 min health quiz to get your personalised Nutrition score and Report",
+                "Book your consultation with Dr. Kirti Jain to get expert nutrition advice"
+              ]}
+              className="text-xl md:text-4xl text-white/90 drop-shadow-md"
+              speed={100}
+              delay={500}
+              pauseBetween={1000}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <Button 
               onClick={onStartQuiz}
-              size="lg" className="btn-hero"
+              size="lg" className="btn-hero mobile-spacing"
             >
               Start Your Health Quiz
             </Button>
             <Button 
               onClick={onBookAppointment}
-              size="lg" className="btn-hero"
+              size="lg" className="btn-hero mobile-spacing"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Appointment
@@ -95,7 +106,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
             <span>Join 5,000+ happy clients who transformed their health</span>
           </div>
         </div>
-      </section>
+      </AnimatedLiquidBackground>
 
       {/* About Section */}
       <section className="py-16 px-4">

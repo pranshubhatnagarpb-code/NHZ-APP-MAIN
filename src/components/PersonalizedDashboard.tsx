@@ -324,54 +324,54 @@ const PersonalizedDashboard = ({
 
         {/* BMI Comparison Section */}
         {healthyData && (
-          <Card className="shadow-large mb-8 bg-gradient-to-r from-primary/5 to-secondary/5">
+          <Card className="shadow-large mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 card-mobile">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
                 <Scale className="w-5 h-5 text-primary" />
                 BMI Comparison & Health Insights
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-sm sm:text-base">
                 Understanding your current BMI compared to healthy ranges
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* BMI Overview */}
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center p-4 bg-muted/30 rounded-lg">
-                  <div className="text-2xl font-bold text-primary mb-1">{healthyData.currentBMI}</div>
-                  <div className="text-sm text-muted-foreground">Current BMI</div>
-                  <Badge variant={healthyData.isHealthy ? "default" : "outline"} className="mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold text-primary mb-1">{healthyData.currentBMI}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Current BMI</div>
+                  <Badge variant={healthyData.isHealthy ? "default" : "outline"} className="mt-2 text-xs">
                     {healthyData.isHealthy ? "Healthy Range" : healthyData.needsGain ? "Underweight" : "Overweight"}
                   </Badge>
                 </div>
 
-                <div className="text-center p-4 bg-muted/30 rounded-lg">
-                  <div className="text-2xl font-bold text-success mb-1">18.5 - 24.9</div>
-                  <div className="text-sm text-muted-foreground">Healthy BMI Range</div>
-                  <Badge className="mt-2 bg-success/10 text-success">Optimal</Badge>
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold text-success mb-1">18.5 - 24.9</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Healthy BMI Range</div>
+                  <Badge className="mt-2 bg-success/10 text-success text-xs">Optimal</Badge>
                 </div>
 
-                <div className="text-center p-4 bg-muted/30 rounded-lg">
-                  <div className="text-2xl font-bold mb-1" style={{ color: healthyData.weightDifference > 0 ? '#ea580c' : healthyData.weightDifference < 0 ? '#06b300' : 'inherit' }}>
+                <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg">
+                  <div className={`text-xl sm:text-2xl font-bold mb-1 ${healthyData.weightDifference > 0 ? 'text-orange-600' : healthyData.weightDifference < 0 ? 'text-green-600' : ''}`}>
                     {healthyData.weightDifference > 0 ? `-${healthyData.weightDifference}` : `${Math.abs(healthyData.weightDifference)}kg`}
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {healthyData.needsGain ? "To acieve your optimal weight" : "To achieve your optimal weight"}
+                  <div className="text-xs sm:text-sm text-muted-foreground">
+                    {healthyData.needsGain ? "To achieve your optimal weight" : "To achieve your optimal weight"}
                   </div>
-                  <Badge variant="outline" className="mt-2">
+                  <Badge variant="outline" className="mt-2 text-xs">
                     {healthyData.needsGain ? "Gain Weight" : "Lose Weight"}
                   </Badge>
                 </div>
               </div>
 
               {/* Visual Comparison */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-foreground">BMI Comparison</h4>
-                  <div className="flex justify-center items-end gap-8 h-32">
+                  <h4 className="font-semibold text-foreground text-sm sm:text-base">BMI Comparison</h4>
+                  <div className="flex justify-center items-end gap-4 sm:gap-8 h-24 sm:h-32">
                     {/* Current BMI Silhouette */}
                     <div className="flex flex-col items-center">
-                      <div className={`w-16 h-24 rounded-t-full border-4 transition-all duration-300 ${
+                      <div className={`w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 transition-all duration-300 ${
                         healthyData.currentBMI < 18.5 ? 'border-red-400 bg-red-50' :
                         healthyData.currentBMI > 24.9 ? 'border-orange-400 bg-orange-50' :
                         'border-success bg-success/10'
@@ -382,15 +382,15 @@ const PersonalizedDashboard = ({
                           'bg-success/20'
                         }`}>
                           {/* Simple body shape: head and torso */}
-                          <div className={`w-3 h-3 rounded-full bg-current opacity-80 ${
+                          <div className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-current opacity-80 ${
                             healthyData.currentBMI < 18.5 ? 'bg-red-600' :
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600' :
                             'bg-success'
                           }`} /> {/* Head */}
-                          <div className={`h-6 rounded-full bg-current opacity-80 ${
-                            healthyData.currentBMI < 18.5 ? 'bg-red-600 w-4' :
-                            healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-6' :
-                            'bg-success w-4'
+                          <div className={`h-4 sm:h-6 rounded-full bg-current opacity-80 ${
+                            healthyData.currentBMI < 18.5 ? 'bg-red-600 w-3 sm:w-4' :
+                            healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-4 sm:w-6' :
+                            'bg-success w-3 sm:w-4'
                           }`} /> {/* Torso - wider for fat, narrower for lean */}
                         </div>
                       </div>
@@ -400,11 +400,11 @@ const PersonalizedDashboard = ({
 
                     {/* Healthy BMI Silhouette */}
                     <div className="flex flex-col items-center">
-                      <div className="w-16 h-24 rounded-t-full border-4 border-success bg-success/10">
+                      <div className="w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 border-success bg-success/10">
                         <div className="w-full h-3/4 rounded-t-full bg-success/20 flex flex-col items-center justify-center gap-1">
                           {/* Lean body shape: head and narrow torso */}
-                          <div className="w-3 h-3 rounded-full bg-success opacity-80" /> {/* Head */}
-                          <div className="h-6 w-4 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
+                          <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-success opacity-80" /> {/* Head */}
+                          <div className="h-4 sm:h-6 w-3 sm:w-4 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground mt-2">Healthy</div>
@@ -414,10 +414,10 @@ const PersonalizedDashboard = ({
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-foreground">Weight Range for Your Height</h4>
+                  <h4 className="font-semibold text-foreground text-sm sm:text-base">Weight Range for Your Height</h4>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Minimum Healthy Weight</span>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">Minimum Healthy Weight</span>
                       <span className="font-semibold">{healthyData.healthyWeightMin} kg</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
@@ -426,8 +426,8 @@ const PersonalizedDashboard = ({
                         style={{ width: `${Math.min(100, (healthyData.currentWeight / healthyData.healthyWeightMax) * 100)}%` }}
                       ></div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Maximum Healthy Weight</span>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">Maximum Healthy Weight</span>
                       <span className="font-semibold">{healthyData.healthyWeightMax} kg</span>
                     </div>
                   </div>
@@ -448,22 +448,24 @@ const PersonalizedDashboard = ({
         )}
 
         {/* Insights Section */}
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-8 mb-8">
           {/* Health Insights */}
-          <Card className="shadow-soft">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="shadow-soft card-mobile">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                 <Activity className="w-5 h-5 text-primary" />
                 Your Health Insights
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 sm:space-y-4">
               {insights.map((insight, index) => (
                 <div key={index} className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  {insight.icon}
-                  <div>
+                  <div className="flex-shrink-0 mt-0.5">
+                    {insight.icon}
+                  </div>
+                  <div className="min-w-0">
                     <h4 className="font-semibold text-sm">{insight.title}</h4>
-                    <p className="text-xs text-muted-foreground">{insight.description}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{insight.description}</p>
                   </div>
                 </div>
               ))}
@@ -471,9 +473,9 @@ const PersonalizedDashboard = ({
           </Card>
 
           {/* Action Tips */}
-          <Card className="shadow-soft">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="shadow-soft card-mobile">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                 <CheckCircle className="w-5 h-5 text-success" />
                 Actionable Tips
               </CardTitle>
@@ -481,9 +483,9 @@ const PersonalizedDashboard = ({
             <CardContent>
               <ul className="space-y-3">
                 {tips.map((tip, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                  <li key={index} className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{tip}</span>
+                    <span className="text-sm text-muted-foreground leading-relaxed">{tip}</span>
                   </li>
                 ))}
               </ul>

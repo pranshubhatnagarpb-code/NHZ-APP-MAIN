@@ -17,6 +17,7 @@ import {
   Star
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
 import { z } from 'zod';
 
 const contactSchema = z.object({
@@ -172,7 +173,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-16 px-4">
+      <AnimatedLiquidBackground className="text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <Badge className="bg-white/20 text-white mb-4">
             Get In Touch
@@ -188,7 +189,7 @@ export default function Contact() {
             nutrition guidance and start your journey to better health today.
           </p>
         </div>
-      </section>
+      </AnimatedLiquidBackground>
 
       {/* Contact Methods */}
       <section className="py-16 px-4 -mt-8">

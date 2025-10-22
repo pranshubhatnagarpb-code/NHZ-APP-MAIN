@@ -127,6 +127,141 @@
     @apply border-border;
   }
 
+  /* Mobile Responsiveness Improvements */
+  @media (max-width: 768px) {
+    /* Touch-friendly button sizing */
+    .btn-hero {
+      @apply py-6 px-8 text-lg min-h-[48px];
+    }
+
+    /* Better mobile typography */
+    .text-4xl {
+      @apply text-2xl;
+    }
+
+    .text-6xl {
+      @apply text-4xl;
+    }
+
+    /* Mobile-first card layouts */
+    .quiz-card {
+      @apply p-4;
+    }
+
+    /* Mobile navigation improvements */
+    .mobile-menu {
+      @apply max-h-[80vh] overflow-y-auto;
+    }
+
+    /* Touch-friendly form elements */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    textarea,
+    select {
+      @apply min-h-[48px] text-base;
+    }
+
+    /* Mobile progress bars */
+    .progress-bar {
+      @apply h-4;
+    }
+
+    /* Better mobile spacing */
+    .mobile-spacing {
+      @apply px-4 py-3;
+    }
+
+    /* Mobile card improvements */
+    .card-mobile {
+      @apply p-4 shadow-sm;
+    }
+  }
+
+  /* Extra small screens (phones in portrait) */
+  @media (max-width: 480px) {
+    /* Compact mobile layout */
+    .btn-hero {
+      @apply py-4 px-6 text-base min-h-[44px] w-full;
+    }
+
+    /* Smaller typography for very small screens */
+    .text-3xl {
+      @apply text-xl;
+    }
+
+    .text-4xl {
+      @apply text-xl;
+    }
+
+    /* Compact spacing */
+    .mobile-compact {
+      @apply px-3 py-2;
+    }
+
+    /* Smaller cards for mobile */
+    .quiz-card {
+      @apply p-3;
+    }
+
+    /* Mobile-first grid layouts */
+    .mobile-grid {
+      @apply grid-cols-1 gap-3;
+    }
+  }
+
+  /* Touch-friendly interactions for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+
+    .hover\:shadow-md:hover {
+      box-shadow: inherit;
+    }
+
+    /* Ensure touch targets are at least 44px */
+    button, a, input, select, textarea {
+      min-height: 44px;
+    }
+
+    /* Better tap highlighting */
+    button, .btn-hero, .btn-accent {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  /* Improved mobile scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent zoom on input focus for iOS */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="password"],
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
+
+  .animate-quiz-corner {
+    animation: quiz-corner-float 3s ease-in-out infinite;
+  }
+
+  /* Nutrition score circle */
+  .score-circle {
+    @apply relative w-32 h-32 rounded-full flex items-center justify-center;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    box-shadow: var(--shadow-large);
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
   }
@@ -136,20 +271,22 @@
   /* Custom button variants */
   .btn-hero {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    @apply text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105;
-    box-shadow: var(--shadow-medium);
-  }
-  
-  .btn-hero:hover {
+    @apply text-white font-bold py-5 px-10 rounded-xl transition-all duration-300 hover:scale-105 text-lg;
     box-shadow: var(--shadow-large);
+    border: 2px solid transparent;
   }
-  
+
+  .btn-hero:hover {
+    box-shadow: 0 35px 60px -12px hsl(var(--primary) / 0.4);
+    border-color: hsl(var(--primary-foreground) / 0.2);
+  }
+
   .btn-accent {
     background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
     @apply text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
     box-shadow: var(--shadow-soft);
   }
-  
+
   .btn-accent:hover {
     box-shadow: var(--shadow-medium);
   }
@@ -159,15 +296,15 @@
     @apply bg-card border border-border rounded-2xl p-8 transition-all duration-500;
     box-shadow: var(--shadow-soft);
   }
-  
+
   .quiz-card-enter {
     @apply transform translate-x-full opacity-0;
   }
-  
+
   .quiz-card-active {
     @apply transform translate-x-0 opacity-100;
   }
-  
+
   .quiz-card-exit {
     @apply transform -translate-x-full opacity-0;
   }
@@ -182,10 +319,192 @@
     @apply bg-gradient-to-br from-primary via-secondary to-accent;
   }
 
-  /* Nutrition score circle */
-  .score-circle {
-    @apply relative w-32 h-32 rounded-full flex items-center justify-center;
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    box-shadow: var(--shadow-large);
+  /* Liquid Background Animation */
+  .liquid-bg {
+    background: linear-gradient(45deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary-light)) 25%,
+      hsl(var(--secondary)) 50%,
+      hsl(var(--primary)) 75%,
+      hsl(var(--primary-light)) 100%);
+    background-size: 400% 400%;
+    animation: liquid-flow 8s ease-in-out infinite;
   }
+
+  .liquid-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+      rgba(255,255,255,0.1) 0%,
+      rgba(255,255,255,0.05) 50%,
+      rgba(255,255,255,0.1) 100%);
+    background-size: 200% 200%;
+    animation: liquid-shine 6s ease-in-out infinite;
+    mix-blend-mode: overlay;
+  }
+
+  .liquid-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%,
+      hsl(var(--secondary)) 0%,
+      transparent 50%),
+      radial-gradient(circle at 70% 30%,
+        hsl(var(--primary-light)) 0%,
+        transparent 50%);
+    background-size: 100% 100%, 100% 100%;
+    animation: liquid-bubble 10s ease-in-out infinite;
+    opacity: 0.3;
+  }
+
+  @keyframes liquid-flow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 100% 50%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+  }
+
+  @keyframes liquid-shine {
+    0%, 100% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes liquid-bubble {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.3;
+    }
+    33% {
+      transform: scale(1.1) rotate(120deg);
+      opacity: 0.5;
+    }
+    66% {
+      transform: scale(0.9) rotate(240deg);
+      opacity: 0.4;
+    }
+  }
+
+  /* Mouse Text Effect */
+  .mouse-text-effect {
+    position: relative;
+    transition: transform 0.1s ease-out;
+  }
+
+  .mouse-text-effect:hover {
+    transform: scale(1.05);
+  }
+
+  .mouse-text-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at center,
+      hsl(var(--primary) / 0.2) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .mouse-text-effect:hover .mouse-text-glow {
+    opacity: 1;
+  }
+
+  @keyframes typewriter-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Floating Quiz Icons */
+  @keyframes float-heart {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-10px, -15px) rotate(5deg);
+    }
+    50% {
+      transform: translate(10px, -20px) rotate(-5deg);
+    }
+    75% {
+      transform: translate(-5px, -10px) rotate(3deg);
+    }
+  }
+
+  @keyframes float-activity {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(15px, -10px) rotate(-3deg);
+    }
+    66% {
+      transform: translate(-15px, -5px) rotate(3deg);
+    }
+  }
+
+  @keyframes float-water {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-12px, 15px) rotate(-4deg);
+    }
+    40% {
+      transform: translate(12px, 10px) rotate(4deg);
+    }
+    60% {
+      transform: translate(-8px, 20px) rotate(-2deg);
+    }
+    80% {
+      transform: translate(8px, 5px) rotate(2deg);
+    }
+  }
+
+  .animate-float-heart {
+    animation: float-heart 4s ease-in-out infinite;
+  }
+
+  .animate-float-activity {
+    animation: float-activity 3.5s ease-in-out infinite;
+  }
+
+  /* Quiz Corner Icons Animation */
+  @keyframes quiz-corner-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-3px) rotate(2deg);
+      opacity: 1;
+    }
+  }
+
+  .animate-quiz-corner {
+    animation: quiz-corner-float 3s ease-in-out infinite;
+  }
+
 }

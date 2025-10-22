@@ -18,14 +18,14 @@ const ProcessingScreen = ({ onComplete }: ProcessingScreenProps) => {
       duration: 1500
     },
     {
-      icon: <Activity className="w-8 h-8 text-secondary" />,
+      icon: <Activity className="w-8 h-8 text-primary" />,
       text: "Calculating your BMI and health metrics...",
       duration: 1500
     },
     {
-      icon: <Zap className="w-8 h-8 text-accent" />,
-      text: "Generating personalized recommendations...",
-      duration: 2000
+      icon: <Zap className="w-8 h-8 text-primary" />,
+      text: "Generating personalized tips...",
+      duration: 1500
     },
     {
       icon: <Sparkles className="w-8 h-8 text-primary" />,

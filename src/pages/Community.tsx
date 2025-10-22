@@ -13,6 +13,7 @@ import {
   ArrowRight,
   UserCheck
 } from "lucide-react";
+import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
 
 export default function Community() {
   const benefits = [
@@ -85,7 +86,7 @@ export default function Community() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-16 px-4">
+      <AnimatedLiquidBackground className="text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <Badge className="bg-white/20 text-white mb-4">
             Free WhatsApp Community
@@ -127,7 +128,7 @@ export default function Community() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedLiquidBackground>
 
       {/* Benefits Section */}
       <section className="py-16 px-4">

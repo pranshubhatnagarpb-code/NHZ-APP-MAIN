@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { AuthModal } from '@/components/AuthModal';
+import MouseTextEffect from "@/components/MouseTextEffect";
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,11 +41,16 @@ export function Navigation() {
         <div className="container flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img
-              src="/headerlogo.png"
-              alt="Nutrition hai Zaruri"
-              className="h-10 w-auto object-contain"
-            />
+            <MouseTextEffect
+              className="transition-all duration-300"
+              intensity={0.08}
+            >
+              <img
+                src="/headerlogo.png"
+                alt="Nutrition hai Zaruri"
+                className="h-10 w-auto object-contain transition-all duration-300"
+              />
+            </MouseTextEffect>
           </Link>
 
           {/* Desktop Navigation */}

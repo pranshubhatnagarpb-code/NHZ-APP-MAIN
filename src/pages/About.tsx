@@ -12,6 +12,7 @@ import {
   Target,
   Sparkles
 } from "lucide-react";
+import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
 import { Link } from "react-router-dom";
 
 export default function About() {
@@ -75,7 +76,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-16 px-4">
+      <AnimatedLiquidBackground className="text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -132,7 +133,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedLiquidBackground>
 
       {/* Story Section */}
       <section className="py-16 px-4">
