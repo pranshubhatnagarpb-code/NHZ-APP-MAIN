@@ -262,6 +262,17 @@
     animation: quiz-corner-float 3s ease-in-out infinite;
   }
 
+  /* Typewriter cursor animation */
+  .typewriter-cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
   /* Nutrition score circle */
   .score-circle {
     @apply relative w-32 h-32 rounded-full flex items-center justify-center;

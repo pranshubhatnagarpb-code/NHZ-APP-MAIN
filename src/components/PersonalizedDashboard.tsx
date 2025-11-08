@@ -302,14 +302,14 @@ const PersonalizedDashboard = ({
   const hasPendingPayment = latestAppointment?.payment_status === 'pending';
 
   return (
-    <div className="min-h-screen bg-background py-4 sm:py-8 px-3 sm:px-4">
+    <div className="min-h-screen bg-background py-4 sm:py-8 px-3 sm:px-4 overflow-x-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 px-2">
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 leading-tight">
             Hello {userData.fullName}! 👋
           </h1>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-lg text-muted-foreground leading-relaxed">
             Your personalized nutrition report
           </p>
           <Button
@@ -334,7 +334,7 @@ const PersonalizedDashboard = ({
                 Understanding your current BMI compared to healthy ranges
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 px-2 sm:px-6">
               {/* BMI Overview */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
                 <div className="text-center p-3 sm:p-4 bg-muted/30 rounded-lg min-w-0">
@@ -365,10 +365,10 @@ const PersonalizedDashboard = ({
               </div>
 
               {/* Visual Comparison */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 px-1">
                 <div className="space-y-4">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">BMI Comparison</h4>
-                  <div className="flex justify-center items-end gap-6 sm:gap-8 h-24 sm:h-32">
+                  <div className="flex justify-center items-end gap-5 sm:gap-8 h-24 sm:h-32">
                     {/* Current BMI Silhouette */}
                     <div className="flex flex-col items-center min-w-0">
                       <div className={`w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 transition-all duration-300 ${
@@ -387,9 +387,9 @@ const PersonalizedDashboard = ({
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600' :
                             'bg-success'
                           }`} /> {/* Head */}
-                          <div className={`h-4 sm:h-6 rounded-full bg-current opacity-80 ${
+                          <div className={`h-12 sm:h-10 rounded-full bg-current opacity-80 ${
                             healthyData.currentBMI < 18.5 ? 'bg-red-600 w-3 sm:w-4' :
-                            healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-4 sm:w-6' :
+                            healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-6 sm:w-8' :
                             'bg-success w-3 sm:w-4'
                           }`} /> {/* Torso - wider for fat, narrower for lean */}
                         </div>
@@ -404,7 +404,7 @@ const PersonalizedDashboard = ({
                         <div className="w-full h-3/4 rounded-t-full bg-success/20 flex flex-col items-center justify-center gap-1">
                           {/* Lean body shape: head and narrow torso */}
                           <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-success opacity-80" /> {/* Head */}
-                          <div className="h-4 sm:h-6 w-3 sm:w-4 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
+                          <div className="h-12 sm:h-10 w-5 sm:w-5 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground mt-2 text-center">Healthy</div>
@@ -415,7 +415,7 @@ const PersonalizedDashboard = ({
 
                 <div className="space-y-4">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">Weight Range for Your Height</h4>
-                  <div className="space-y-3">
+                  <div className="space-y-3 px-1">
                     <div className="flex justify-between items-center text-sm px-2">
                       <span className="text-muted-foreground flex-1 min-w-0">Minimum Healthy Weight</span>
                       <span className="font-semibold ml-2">{healthyData.healthyWeightMin} kg</span>
@@ -435,7 +435,7 @@ const PersonalizedDashboard = ({
                   <div className="p-3 bg-blue-50 rounded-lg border border-blue-200 mx-2">
                     <div className="flex items-start gap-2">
                       <Info className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <div className="text-xs text-blue-800 leading-relaxed">
+                      <div className="text-xs text-blue-800 leading-relaxed break-words">
                         <p className="font-medium mb-1">Important Note:</p>
                         <p>BMI is a general indicator. Consult Dr. Kirti Jain for personalized health assessment considering muscle mass, bone density, and overall body composition.</p>
                       </div>
@@ -463,7 +463,7 @@ const PersonalizedDashboard = ({
                   <div className="flex-shrink-0 mt-0.5">
                     {insight.icon}
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 break-words">
                     <h4 className="font-semibold text-sm">{insight.title}</h4>
                     <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{insight.description}</p>
                   </div>
@@ -485,7 +485,7 @@ const PersonalizedDashboard = ({
                 {tips.map((tip, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-relaxed">{tip}</span>
+                    <span className="text-sm text-muted-foreground leading-relaxed break-words">{tip}</span>
                   </li>
                 ))}
               </ul>
@@ -528,7 +528,7 @@ const PersonalizedDashboard = ({
                         </Badge>
                       </div>
                     </div>
-                    <div className="text-center sm:text-right">
+                    <div className="text-center sm:text-right mt-1 sm:mt-0">
                       <div className="font-bold text-lg">₹{appointment.payment_amount}</div>
                     </div>
                   </div>
@@ -579,12 +579,12 @@ const PersonalizedDashboard = ({
             </Card>
           )}
 
-          <Card className={`shadow-medium border-secondary/20 ${!hasAppointments ? '' : 'sm:col-span-2'} card-mobile`}>
+          <Card className="shadow-medium border-primary/20 card-mobile">
             <CardContent className="p-4 sm:p-6 text-center">
               <MessageCircle className="w-10 sm:w-12 h-10 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
               <h3 className="text-lg sm:text-xl font-bold mb-2 leading-tight">Join WhatsApp Community</h3>
               <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
-                Connect with like-minded people and get daily health tips
+                Connect with like-minded people and get daily health tips from experts over WhatsApp
               </p>
               <Button
                 onClick={() => window.open("https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL", "_blank")}
@@ -607,5 +607,4 @@ const PersonalizedDashboard = ({
     </div>
   );
 };
-
 export default PersonalizedDashboard;

@@ -69,9 +69,7 @@ export default function Contact() {
   ];
 
   const officeHours = [
-    { day: "Monday - Friday", time: "9:00 AM - 7:00 PM" },
-    { day: "Saturday", time: "9:00 AM - 5:00 PM" },
-    { day: "Sunday", time: "10:00 AM - 2:00 PM" }
+    { day: "All 7 days of the week", time: "10:00 AM - 7:00 PM" },
   ];
 
   const faqs = [
@@ -368,14 +366,14 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-2">
-                    Dr. Kirti Jain Nutrition Clinic
+                    Nutrition hai Zaruri
                   </p>
                   <p className="text-muted-foreground mb-4">
-                    Jaipur, Rajasthan, India
+                    65/A-9, Gopalpura Bypass, Jaipur – 302021, India
                   </p>
                   <p className="text-sm text-muted-foreground">
                     <Heart className="w-4 h-4 inline mr-1 text-accent" />
-                    Currently serving clients across India through online consultations
+                    Currently serving clients across India through online and offline consultations
                   </p>
                 </CardContent>
               </Card>

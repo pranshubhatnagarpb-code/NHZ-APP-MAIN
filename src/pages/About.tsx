@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  GraduationCap, 
-  Award, 
-  Users, 
-  Heart, 
-  Star, 
+import {
+  GraduationCap,
+  Award,
+  Users,
+  Heart,
+  Star,
   Clock,
   CheckCircle,
   Target,
@@ -14,27 +14,33 @@ import {
 } from "lucide-react";
 import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 export default function About() {
   const achievements = [
     {
       icon: <Users className="w-6 h-6 text-primary" />,
-      number: "5,000+",
+      number: 5000,
+      displayNumber: "5,000+",
       label: "Happy Clients Transformed"
     },
     {
       icon: <Clock className="w-6 h-6 text-primary" />,
-      number: "10+",
+      number: 10,
+      displayNumber: "10+",
       label: "Years of Experience"
     },
     {
       icon: <Star className="w-6 h-6 text-accent" />,
-      number: "4.9",
+      number: 4.9,
+      displayNumber: "4.9",
       label: "Average Client Rating"
     },
     {
       icon: <Award className="w-6 h-6 text-success" />,
-      number: "15+",
+      number: 15,
+      displayNumber: "15+",
       label: "Certifications & Awards"
     }
   ];
@@ -112,25 +118,48 @@ export default function About() {
               </div>
             </div>
             
-            <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative"
+            >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="grid grid-cols-2 gap-6">
                   {achievements.map((achievement, index) => (
-                    <div key={index} className="text-center">
-                      <div className="flex justify-center mb-2">
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.1,
+                        ease: "easeOut"
+                      }}
+                      whileHover={{
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
+                      }}
+                      className="text-center group cursor-pointer"
+                    >
+                      <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         {achievement.icon}
                       </div>
                       <div className="text-2xl font-bold text-white mb-1">
-                        {achievement.number}
+                        <AnimatedNumber
+                          value={achievement.number}
+                          className="text-white"
+                          suffix={achievement.displayNumber.includes('+') ? '+' : ''}
+                        />
                       </div>
                       <div className="text-sm text-white/80">
                         {achievement.label}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </AnimatedLiquidBackground>

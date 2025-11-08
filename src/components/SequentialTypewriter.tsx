@@ -20,9 +20,33 @@ const SequentialTypewriter = ({
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(false);
   const textLengthRef = useRef(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const checkDialogOpen = () => {
+      const openDialog = document.querySelector('[role="dialog"][data-state="open"]');
+      setIsPaused(!!openDialog);
+    };
+
+    checkDialogOpen();
+
+    const observer = new MutationObserver(() => {
+      checkDialogOpen();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-state", "aria-hidden", "style"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (currentSegmentIndex >= segments.length) return;
+    if (isPaused) return;
 
     const currentSegment = segments[currentSegmentIndex];
     const startDelay = currentSegmentIndex === 0 ? delay : pauseBetween;
@@ -36,13 +60,19 @@ const SequentialTypewriter = ({
         // Clear text character by character
         textLengthRef.current = displayText.length;
         const clearTimer = setInterval(() => {
+          if (isPaused) {
+            clearInterval(clearTimer);
+            return;
+          }
           if (textLengthRef.current > 0) {
             textLengthRef.current--;
             setDisplayText(prev => prev.slice(0, -1));
           } else {
             clearInterval(clearTimer);
             // Start typing new segment after a brief pause
-            setTimeout(() => startTyping(), 200);
+            setTimeout(() => {
+              if (!isPaused) startTyping();
+            }, 200);
           }
         }, speed / 2);
 
@@ -59,6 +89,10 @@ const SequentialTypewriter = ({
       let currentIndex = 0;
 
       const typeInterval = setInterval(() => {
+        if (isPaused) {
+          clearInterval(typeInterval);
+          return;
+        }
         if (currentIndex < currentSegment.length) {
           setDisplayText(currentSegment.slice(0, currentIndex + 1));
           currentIndex++;
@@ -69,7 +103,7 @@ const SequentialTypewriter = ({
           // Move to next segment after pause
           if (currentSegmentIndex < segments.length - 1) {
             setTimeout(() => {
-              setCurrentSegmentIndex(prev => prev + 1);
+              if (!isPaused) setCurrentSegmentIndex(prev => prev + 1);
             }, pauseBetween);
           } else {
             // Last segment - keep cursor for a moment then hide it
@@ -83,10 +117,10 @@ const SequentialTypewriter = ({
 
     const timer = setTimeout(startSequence, startDelay);
     return () => clearTimeout(timer);
-  }, [currentSegmentIndex, segments, speed, delay, pauseBetween]);
+  }, [currentSegmentIndex, segments, speed, delay, pauseBetween, isPaused, displayText]);
 
   return (
-    <span className={className}>
+    <span className={`${className} whitespace-pre-wrap break-words`}>
       {displayText}
       {showCursor && <span className="typewriter-cursor">|</span>}
     </span>
@@ -94,3 +128,4 @@ const SequentialTypewriter = ({
 };
 
 export default SequentialTypewriter;
+

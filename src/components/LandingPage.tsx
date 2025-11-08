@@ -61,18 +61,20 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
               Nutrition Score & Report
             </span>
           </h1>
-          <div className="text-xl md:text-4xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
-            <SequentialTypewriter
-              segments={[
-                "Hello!",
-                "Take our 10 min health quiz to get your personalised Nutrition score and Report",
-                "Book your consultation with Dr. Kirti Jain to get expert nutrition advice"
-              ]}
-              className="text-xl md:text-4xl text-white/90 drop-shadow-md"
-              speed={100}
-              delay={500}
-              pauseBetween={1000}
-            />
+          <div className="text-xl md:text-4xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md min-h-[8rem] flex items-center justify-center">
+            <div className="w-full">
+              <SequentialTypewriter
+                segments={[
+                  "Hello!",
+                  "Take our 10 min health quiz to get your personalised Nutrition score and Report",
+                  "Book your consultation with Dr. Kirti Jain to get expert nutrition advice"
+                ]}
+                className="text-xl md:text-4xl text-white/90 drop-shadow-md block text-center"
+                speed={100}
+                delay={500}
+                pauseBetween={1000}
+              />
+            </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <Button 
