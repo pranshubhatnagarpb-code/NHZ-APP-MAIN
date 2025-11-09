@@ -72,7 +72,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 className="text-xl md:text-4xl text-white/90 drop-shadow-md block text-center"
                 speed={100}
                 delay={500}
-                pauseBetween={1000}
+                pauseBetween={500}
               />
             </div>
           </div>

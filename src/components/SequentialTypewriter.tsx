@@ -21,6 +21,29 @@ const SequentialTypewriter = ({
   const [showCursor, setShowCursor] = useState(false);
   const textLengthRef = useRef(0);
   const [isPaused, setIsPaused] = useState(false);
+  // Track current phase and timers for robust pause/resume
+  const phaseRef = useRef<'idle' | 'clearing' | 'typing' | 'waitingNext'>('idle');
+  const currentIndexRef = useRef(0);
+  const timersRef = useRef<{ typeInterval?: number; clearInterval?: number; startTimeout?: number; nextTimeout?: number }>({});
+
+  const clearAllTimers = () => {
+    if (timersRef.current.typeInterval) {
+      clearInterval(timersRef.current.typeInterval);
+      timersRef.current.typeInterval = undefined;
+    }
+    if (timersRef.current.clearInterval) {
+      clearInterval(timersRef.current.clearInterval);
+      timersRef.current.clearInterval = undefined;
+    }
+    if (timersRef.current.startTimeout) {
+      clearTimeout(timersRef.current.startTimeout);
+      timersRef.current.startTimeout = undefined;
+    }
+    if (timersRef.current.nextTimeout) {
+      clearTimeout(timersRef.current.nextTimeout);
+      timersRef.current.nextTimeout = undefined;
+    }
+  };
 
   useEffect(() => {
     const checkDialogOpen = () => {
@@ -45,79 +68,93 @@ const SequentialTypewriter = ({
   }, []);
 
   useEffect(() => {
+    // On pause: cancel all timers and hold state
+    if (isPaused) {
+      clearAllTimers();
+      return;
+    }
     if (currentSegmentIndex >= segments.length) return;
-    if (isPaused) return;
 
     const currentSegment = segments[currentSegmentIndex];
     const startDelay = currentSegmentIndex === 0 ? delay : pauseBetween;
+
+    const startClearing = () => {
+      phaseRef.current = 'clearing';
+      textLengthRef.current = displayText.length;
+      timersRef.current.clearInterval = window.setInterval(() => {
+        if (textLengthRef.current > 0) {
+          textLengthRef.current--;
+          setDisplayText(prev => prev.slice(0, -1));
+        } else {
+          if (timersRef.current.clearInterval) {
+            clearInterval(timersRef.current.clearInterval);
+            timersRef.current.clearInterval = undefined;
+          }
+          // small pause before typing
+          timersRef.current.startTimeout = window.setTimeout(() => {
+            startTyping(0);
+          }, 200);
+        }
+      }, speed / 2);
+    };
 
     const startSequence = () => {
       if (currentSegmentIndex > 0) {
         // Clear previous text first
         setIsTyping(false);
         setShowCursor(false);
-
-        // Clear text character by character
-        textLengthRef.current = displayText.length;
-        const clearTimer = setInterval(() => {
-          if (isPaused) {
-            clearInterval(clearTimer);
-            return;
-          }
-          if (textLengthRef.current > 0) {
-            textLengthRef.current--;
-            setDisplayText(prev => prev.slice(0, -1));
-          } else {
-            clearInterval(clearTimer);
-            // Start typing new segment after a brief pause
-            setTimeout(() => {
-              if (!isPaused) startTyping();
-            }, 200);
-          }
-        }, speed / 2);
-
-        return () => clearInterval(clearTimer);
+        startClearing();
       } else {
         // First segment - start typing immediately
-        startTyping();
+        startTyping(displayText.length || 0);
       }
     };
 
-    const startTyping = () => {
+    const startTyping = (startIndex = 0) => {
       setIsTyping(true);
       setShowCursor(true);
-      let currentIndex = 0;
+      phaseRef.current = 'typing';
+      currentIndexRef.current = startIndex;
 
-      const typeInterval = setInterval(() => {
-        if (isPaused) {
-          clearInterval(typeInterval);
-          return;
-        }
-        if (currentIndex < currentSegment.length) {
-          setDisplayText(currentSegment.slice(0, currentIndex + 1));
-          currentIndex++;
+      timersRef.current.typeInterval = window.setInterval(() => {
+        if (currentIndexRef.current < currentSegment.length) {
+          setDisplayText(currentSegment.slice(0, currentIndexRef.current + 1));
+          currentIndexRef.current++;
         } else {
-          clearInterval(typeInterval);
+          if (timersRef.current.typeInterval) {
+            clearInterval(timersRef.current.typeInterval);
+            timersRef.current.typeInterval = undefined;
+          }
           setIsTyping(false);
 
           // Move to next segment after pause
           if (currentSegmentIndex < segments.length - 1) {
-            setTimeout(() => {
-              if (!isPaused) setCurrentSegmentIndex(prev => prev + 1);
+            phaseRef.current = 'waitingNext';
+            timersRef.current.nextTimeout = window.setTimeout(() => {
+              setCurrentSegmentIndex(prev => prev + 1);
             }, pauseBetween);
           } else {
             // Last segment - keep cursor for a moment then hide it
             setTimeout(() => setShowCursor(false), 1000);
+            phaseRef.current = 'idle';
           }
         }
       }, speed);
-
-      return () => clearInterval(typeInterval);
     };
 
-    const timer = setTimeout(startSequence, startDelay);
-    return () => clearTimeout(timer);
-  }, [currentSegmentIndex, segments, speed, delay, pauseBetween, isPaused, displayText]);
+    // Resume appropriate phase after unpause
+    if (phaseRef.current === 'typing') {
+      startTyping(currentIndexRef.current || displayText.length || 0);
+      return () => clearAllTimers();
+    }
+    if (phaseRef.current === 'clearing') {
+      startClearing();
+      return () => clearAllTimers();
+    }
+
+    timersRef.current.startTimeout = window.setTimeout(startSequence, startDelay);
+    return () => clearAllTimers();
+  }, [currentSegmentIndex, segments, speed, delay, pauseBetween, isPaused]);
 
   return (
     <span className={`${className} whitespace-pre-wrap break-words`}>

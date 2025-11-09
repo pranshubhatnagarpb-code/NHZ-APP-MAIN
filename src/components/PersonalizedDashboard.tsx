@@ -363,12 +363,11 @@ const PersonalizedDashboard = ({
                   </Badge>
                 </div>
               </div>
-
               {/* Visual Comparison */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 px-1">
                 <div className="space-y-4">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">BMI Comparison</h4>
-                  <div className="flex justify-center items-end gap-5 sm:gap-8 h-24 sm:h-32">
+                  <div className="flex justify-center items-end gap-5 sm:gap-8 h-24 sm:h-40">
                     {/* Current BMI Silhouette */}
                     <div className="flex flex-col items-center min-w-0">
                       <div className={`w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 transition-all duration-300 ${
@@ -387,7 +386,7 @@ const PersonalizedDashboard = ({
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600' :
                             'bg-success'
                           }`} /> {/* Head */}
-                          <div className={`h-12 sm:h-10 rounded-full bg-current opacity-80 ${
+                          <div className={`h-10 sm:h-8 rounded-full bg-current opacity-80 ${
                             healthyData.currentBMI < 18.5 ? 'bg-red-600 w-3 sm:w-4' :
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-6 sm:w-8' :
                             'bg-success w-3 sm:w-4'
@@ -404,7 +403,7 @@ const PersonalizedDashboard = ({
                         <div className="w-full h-3/4 rounded-t-full bg-success/20 flex flex-col items-center justify-center gap-1">
                           {/* Lean body shape: head and narrow torso */}
                           <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-success opacity-80" /> {/* Head */}
-                          <div className="h-12 sm:h-10 w-5 sm:w-5 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
+                          <div className="h-10 sm:h-8 w-5 sm:w-5 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground mt-2 text-center">Healthy</div>
