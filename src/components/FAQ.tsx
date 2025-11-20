@@ -90,13 +90,13 @@ export function FAQ() {
               href="https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL"
               target="_blank"
               rel="noopener noreferrer"
-              size="lg" className="btn-hero"
+              className="btn-hero"
             >
               WhatsApp Support
             </a>
             <a
               href="mailto:info@nutritionhaizaruri.com"
-              size="lg" className="btn-hero"
+              className="btn-hero"
             >
               Email Us
             </a>

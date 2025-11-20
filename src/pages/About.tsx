@@ -20,25 +20,25 @@ import AnimatedNumber from "@/components/AnimatedNumber";
 export default function About() {
   const achievements = [
     {
-      icon: <Users className="w-6 h-6 text-primary" />,
+      icon: <Users className="w-6 h-6 text-yellow-300" />,
       number: 5000,
       displayNumber: "5,000+",
       label: "Happy Clients Transformed"
     },
     {
-      icon: <Clock className="w-6 h-6 text-primary" />,
+      icon: <Clock className="w-6 h-6 text-yellow-300" />,
       number: 10,
       displayNumber: "10+",
       label: "Years of Experience"
     },
     {
-      icon: <Star className="w-6 h-6 text-accent" />,
+      icon: <Star className="w-6 h-6 text-yellow-300" />,
       number: 4.9,
       displayNumber: "4.9",
       label: "Average Client Rating"
     },
     {
-      icon: <Award className="w-6 h-6 text-success" />,
+      icon: <Award className="w-6 h-6 text-yellow-300" />,
       number: 15,
       displayNumber: "15+",
       label: "Certifications & Awards"

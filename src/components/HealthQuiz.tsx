@@ -150,31 +150,31 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 0:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(0)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your dietary preference?
               </h2>
             </div>
 
             {/* Decorative icons in corners */}
             <div className="relative">
-              <div className="hidden sm:block absolute top-2 right-2 text-green-400 animate-quiz-corner">
+              <div className="absolute top-2 right-2 text-secondary animate-quiz-corner z-0">
                 <Sparkle className="w-4 h-4" />
               </div>
-              <div className="hidden sm:block absolute bottom-2 left-2 text-orange-400 animate-quiz-corner">
+              <div className="absolute bottom-2 left-2 text-orange-400 animate-quiz-corner z-0">
                 <Utensils className="w-4 h-4" />
               </div>
             </div>
 
             <RadioGroup value={quizData.dietType} onValueChange={(value) => updateQuizData("dietType", value)}>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="vegetarian" id="vegetarian" />
-                <span className="flex-1 break-words hyphens-auto">🌱 Vegetarian</span>
+                <span className="flex-1">🌱 Vegetarian</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="non-vegetarian" id="non-vegetarian" />
-                <span className="flex-1 break-words hyphens-auto">🍗 Non-Vegetarian</span>
+                <span className="flex-1">🍗 Non-Vegetarian</span>
               </label>
             </RadioGroup>
           </div>
@@ -182,24 +182,24 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 1:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(1)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your age?
               </h2>
             </div>
 
             {/* Decorative icons in corners */}
             <div className="relative">
-              <div className="hidden sm:block absolute top-2 right-2 text-purple-400 animate-quiz-corner">
+              <div className="absolute top-2 right-2 text-purple-400 animate-quiz-corner z-0">
                 <Calendar className="w-4 h-4" />
               </div>
-              <div className="hidden sm:block absolute bottom-2 left-2 text-blue-400 animate-quiz-corner">
+              <div className="absolute bottom-2 left-2 text-blue-400 animate-quiz-corner z-0">
                 <Activity className="w-4 h-4" />
               </div>
             </div>
 
-            <div className="max-w-xs mx-auto w-full px-2">
+            <div className="max-w-xs mx-auto">
               <Input
                 type="number"
                 placeholder="Enter your age"
@@ -213,20 +213,20 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 2:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(2)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your gender?
               </h2>
             </div>
             <RadioGroup value={quizData.gender} onValueChange={(value) => updateQuizData("gender", value)}>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="male" id="male" />
-                <span className="flex-1 break-words hyphens-auto">👨 Male</span>
+                <span className="flex-1">👨 Male</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="female" id="female" />
-                <span className="flex-1 break-words hyphens-auto">👩 Female</span>
+                <span className="flex-1">👩 Female</span>
               </label>
             </RadioGroup>
           </div>
@@ -234,24 +234,24 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 3:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(3)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 Tell us about your physical stats
               </h2>
             </div>
 
             {/* Decorative measurement icons */}
             <div className="relative">
-              <div className="hidden sm:block absolute top-2 right-2 text-emerald-400 animate-quiz-corner">
+              <div className="absolute top-2 right-2 text-secondary animate-quiz-corner z-0">
                 <Scale className="w-4 h-4" />
               </div>
-              <div className="hidden sm:block absolute bottom-2 left-2 text-cyan-400 animate-quiz-corner">
+              <div className="absolute bottom-2 left-2 text-cyan-400 animate-quiz-corner z-0">
                 <Activity className="w-4 h-4" />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto w-full px-2">
+            <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
               <div>
                 <label htmlFor="weight">Weight (kg)</label>
                 <Input
@@ -280,24 +280,24 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(4)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your occupation?
               </h2>
             </div>
             <RadioGroup value={quizData.occupation} onValueChange={(value) => updateQuizData("occupation", value)}>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="job" id="job" />
-                <span className="flex-1 break-words hyphens-auto">💼 Job</span>
+                <span className="flex-1">💼 Job</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="business" id="business" />
-                <span className="flex-1 break-words hyphens-auto">🏢 Business</span>
+                <span className="flex-1">🏢 Business</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="other" id="other" />
-                <span className="flex-1 break-words hyphens-auto">🎯 Other</span>
+                <span className="flex-1">🎯 Other</span>
               </label>
             </RadioGroup>
           </div>
@@ -305,24 +305,24 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 5:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(5)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 How did you hear about us?
               </h2>
             </div>
             <RadioGroup value={quizData.hearAbout} onValueChange={(value) => updateQuizData("hearAbout", value)}>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="facebook" id="facebook" />
-                <span className="flex-1 break-words hyphens-auto">📘 Facebook</span>
+                <span className="flex-1">📘 Facebook</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="instagram" id="instagram" />
-                <span className="flex-1 break-words hyphens-auto">📸 Instagram</span>
+                <span className="flex-1">📸 Instagram</span>
               </label>
-              <label className="flex items-center space-x-2 p-3 sm:p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[52px]">
+              <label className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                 <RadioGroupItem value="website" id="website" />
-                <span className="flex-1 break-words hyphens-auto">🌐 Website</span>
+                <span className="flex-1">🌐 Website</span>
               </label>
             </RadioGroup>
           </div>
@@ -330,27 +330,27 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 6:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(6)}
-              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-tight break-words max-w-full">
                 Any medical conditions? (Optional)
               </h2>
             </div>
 
             {/* Decorative medical icons */}
             <div className="relative">
-              <div className="hidden sm:block absolute top-2 right-2 text-red-400 animate-quiz-corner">
+              <div className="absolute top-2 right-2 text-red-400 animate-quiz-corner z-0">
                 <Stethoscope className="w-4 h-4" />
               </div>
-              <div className="hidden sm:block absolute bottom-2 left-2 text-indigo-400 animate-quiz-corner">
+              <div className="absolute bottom-2 left-2 text-indigo-400 animate-quiz-corner z-0">
                 <Heart className="w-4 h-4" />
               </div>
             </div>
 
             <p className="text-center text-muted-foreground">Select all that apply</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-2xl mx-auto px-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-2xl mx-auto">
               {medicalConditionOptions.map((condition) => (
-                <label key={condition} className="flex items-start space-x-2 p-2 sm:p-3 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full min-h-[48px]">
+                <label key={condition} className="flex items-start space-x-2 p-2 sm:p-3 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md">
                   <Checkbox
                     id={condition}
                     checked={quizData.medicalConditions.includes(condition)}
@@ -366,17 +366,17 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 7:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(7)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your skin type?
               </h2>
             </div>
             <RadioGroup value={quizData.skinType} onValueChange={(value) => updateQuizData("skinType", value)}>
-              {['Dry', 'Normal', 'Oily', 'Acne', 'Pigmentation'].map((type) => (
-                <label key={type} className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full sm:w-full min-h-[52px]">
+              {["Dry", "Normal", "Oily", "Acne", "Pigmentation"].map((type) => (
+                <label key={type} className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md z-10">
                   <RadioGroupItem value={type.toLowerCase()} id={type.toLowerCase()} />
-                  <span className="flex-1 break-words hyphens-auto">{type}</span>
+                  <span className="flex-1">{type}</span>
                 </label>
               ))}
             </RadioGroup>
@@ -385,17 +385,17 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 8:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(8)}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight break-words max-w-full">
                 What's your hair type?
               </h2>
             </div>
             <RadioGroup value={quizData.hairType} onValueChange={(value) => updateQuizData("hairType", value)}>
-              {['Dry', 'Normal', 'Oily', 'Dandruff', 'Itchy Scalp', 'Hairfall'].map((type) => (
-                <label key={type} className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md w-full sm:w-full min-h-[52px]">
-                  <RadioGroupItem value={type.toLowerCase().replace(" ", "-")} id={type.toLowerCase().replace(" ", "-" )} />
-                  <span className="flex-1 break-words hyphens-auto">{type}</span>
+              {["Dry", "Normal", "Oily", "Dandruff", "Itchy Scalp", "Hairfall"].map((type) => (
+                <label key={type} className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 sm:hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md z-10">
+                  <RadioGroupItem value={type.toLowerCase().replace(" ", "-")} id={type.toLowerCase().replace(" ", "-")} />
+                  <span className="flex-1">{type}</span>
                 </label>
               ))}
             </RadioGroup>
@@ -404,25 +404,25 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
       case 9:
         return (
           <div className="space-y-6">
-            <div className="flex items-center justify-center mb-4 px-2">
+            <div className="flex items-center justify-center mb-4 px-2 relative z-10">
               {getQuestionIcon(9)}
-              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-snug tracking-tight break-words max-w-full px-2">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-center leading-tight break-words max-w-full">
                 Any specific products you use?
               </h2>
             </div>
 
             {/* Decorative product icons */}
             <div className="relative">
-              <div className="hidden sm:block absolute top-2 right-2 text-pink-400 animate-quiz-corner">
+              <div className="absolute top-2 right-2 text-pink-400 animate-quiz-corner z-0">
                 <ShoppingBag className="w-4 h-4" />
               </div>
-              <div className="hidden sm:block absolute bottom-2 left-2 text-emerald-400 animate-quiz-corner">
+              <div className="absolute bottom-2 left-2 text-secondary animate-quiz-corner z-0">
                 <Sparkle className="w-4 h-4" />
               </div>
             </div>
 
             <p className="text-center text-muted-foreground">Tell us about skin/hair products (Optional)</p>
-            <div className="max-w-md mx-auto w-full px-2">
+            <div className="max-w-md mx-auto">
               <Input
                 placeholder="e.g., Himalaya face wash, Loreal shampoo..."
                 value={quizData.productsUsed}
@@ -447,7 +447,7 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
             <Sparkles className="w-5 sm:w-6 h-5 sm:h-6 text-primary" />
             <h1 className="text-xl sm:text-2xl font-bold">Health Assessment Quiz</h1>
           </div>
-          <p className="text-sm sm:text-base text-muted-foreground leading-snug tracking-tight break-words px-2">{motivationalMessages[currentStep]}</p>
+          <p className="text-sm sm:text-base text-muted-foreground">{motivationalMessages[currentStep]}</p>
         </div>
 
 
@@ -462,25 +462,25 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
 
 
         {/* Floating Icons Around Quiz */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-visible">
           {/* Floating Heart Icon */}
-          <div className="hidden sm:block absolute -top-6 sm:-top-8 -left-4 sm:-left-8 z-10 animate-float-heart">
+          <div className="absolute -top-6 sm:-top-8 -left-4 sm:-left-8 z-10 animate-float-heart">
             <Heart className="w-6 sm:w-8 h-6 sm:h-8 text-red-400 drop-shadow-lg" />
           </div>
 
           {/* Floating Activity Icon */}
-          <div className="hidden sm:block absolute -top-2 sm:-top-4 -right-4 sm:-right-8 z-10 animate-float-activity">
-            <Activity className="w-6 sm:w-8 h-6 sm:h-8 text-green-400 drop-shadow-lg" />
+          <div className="absolute -top-2 sm:-top-4 -right-4 sm:-right-8 z-10 animate-float-activity">
+            <Activity className="w-6 sm:w-8 h-6 sm:h-8 text-secondary drop-shadow-lg" />
           </div>
 
           {/* Floating Water Drop Icon */}
-          <div className="hidden sm:block absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-4 z-10 animate-float-water">
+          <div className="absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-4 z-10 animate-float-water">
             <Droplets className="w-6 sm:w-8 h-6 sm:h-8 text-blue-400 drop-shadow-lg" />
           </div>
 
           {/* Quiz Card */}
           <Card className={`quiz-card ${isAnimating ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 shadow-large`}>
-            <CardContent className="p-4 sm:p-8">
+            <CardContent className="p-4 sm:p-8 pt-6 sm:pt-8">
               {renderStep()}
             </CardContent>
           </Card>
@@ -488,7 +488,7 @@ const HealthQuiz = ({ initialData, onComplete, onBack }: HealthQuizProps) => {
 
 
         {/* Navigation */}
-        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+        <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4 mt-8">
           <Button
             variant="outline"
             onClick={prevStep}

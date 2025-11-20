@@ -102,23 +102,22 @@ export default function Community() {
             and stay motivated on your wellness journey with Dr. Kirti Jain's expert guidance.
           </p>
           
-          <div className="flex justify-center mb-8">
+          <div size="lg" className="mt-6">
             <a
               href="https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-large"
+              className="inline-flex items-center justify-center btn-hero mobile-spacing text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Join WhatsApp Community
-              <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">
+                <div className="text-3xl font-bold text-yellow-300 mb-2">
                   {stat.number}
                 </div>
                 <div className="text-white/80 text-sm">

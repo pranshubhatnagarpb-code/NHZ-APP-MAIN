@@ -6,6 +6,7 @@ import { FAQ } from "@/components/FAQ";
 import SupportSection from "@/components/SupportSection";
 import AnimatedLiquidBackground from "@/components/AnimatedLiquidBackground";
 import SequentialTypewriter from "@/components/SequentialTypewriter";
+import { Badge } from "@/components/ui/badge";
 
 interface LandingPageProps {
   onStartQuiz: () => void;
@@ -55,6 +56,9 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
       {/* Hero Section */}
       <AnimatedLiquidBackground className="text-white py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
+          <Badge className="bg-white/20 text-white mb-4">
+                Personalised Health Quiz
+          </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
             Discover Your Personalized
             <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent drop-shadow-lg">
@@ -72,32 +76,32 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 className="text-xl md:text-4xl text-white/90 drop-shadow-md block text-center"
                 speed={100}
                 delay={500}
-                pauseBetween={500}
+                pauseBetween={1000}
               />
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <Button 
               onClick={onStartQuiz}
-              size="lg" className="btn-hero mobile-spacing"
+              size="2lg" className="btn-hero mobile-spacing"
             >
               Start Your Health Quiz
             </Button>
             <Button 
               onClick={onBookAppointment}
-              size="lg" className="btn-hero mobile-spacing"
+              size="2lg" className="btn-hero mobile-spacing"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Appointment
             </Button>
           </div>
           
-          <div className="mt-6">
+          <div size="lg" className="mt-6">
             <a
               href="https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+              className="inline-flex items-center justify-center btn-hero mobile-spacing text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Join WhatsApp Community
@@ -163,15 +167,15 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 px-4 bg-muted/50">
+      <section className="py-16 px-4 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-12">
+          <h2 className="text-3xl font-bold text-white mb-12">
             Why Choose Nutrition hai Zaruri?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="shadow-soft border-0 hover:shadow-medium transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-success mx-auto mb-4" />
+                <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold text-lg mb-2">Personalized Plans</h3>
                 <p className="text-muted-foreground">
                   Custom nutrition plans based on your unique health profile and Indian dietary preferences

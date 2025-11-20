@@ -13,7 +13,7 @@ const AnimatedLiquidBackground = ({
       {/* Animated Liquid Background */}
       <div className="liquid-bg absolute inset-0">    
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-secondary/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-secondary/10 to-secondary/20" />
       </div>
 
       {/* Content Overlay */}

@@ -63,11 +63,11 @@ const SupportSection = () => {
         </div>
 
         <div className="mt-8 p-6 bg-card rounded-lg border border-border max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-2 text-muted-foreground mb-2">
+          <div className="flex items-center justify-center gap-2 text-primary mb-2">
             <MapPin className="w-4 h-4" />
             <span className="font-medium">Nutrition Hai Zaruri - Jaipur</span>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-primary">
             Expert nutrition consultation and diet planning services by Dr. Kirti Jain
           </p>
         </div>
