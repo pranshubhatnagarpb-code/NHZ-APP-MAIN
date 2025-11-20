@@ -381,12 +381,12 @@ const PersonalizedDashboard = ({
                           'bg-success/20'
                         }`}>
                           {/* Simple body shape: head and torso */}
-                          <div className={`w-2 sm:w-3 h-4 sm:h-3 rounded-full bg-current opacity-80 ${
+                          <div className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-current opacity-80 flex-none ${
                             healthyData.currentBMI < 18.5 ? 'bg-red-600' :
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600' :
                             'bg-success'
                           }`} /> {/* Head */}
-                          <div className={`h-10 sm:h-8 rounded-full bg-current opacity-80 ${
+                          <div className={`h-10 sm:h-8 rounded-full bg-current opacity-80 flex-none ${
                             healthyData.currentBMI < 18.5 ? 'bg-red-600 w-2 sm:w-3' :
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-6 sm:w-8' :
                             'bg-success w-3 sm:w-4'
@@ -402,8 +402,8 @@ const PersonalizedDashboard = ({
                       <div className="w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 border-success bg-success/10">
                         <div className="w-full h-3/4 rounded-t-full bg-success/20 flex flex-col items-center justify-center gap-1">
                           {/* Lean body shape: head and narrow torso */}
-                          <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-success opacity-80" /> {/* Head */}
-                          <div className="h-10 sm:h-8 w-4 sm:w-4 rounded-full bg-success opacity-80" /> {/* Narrow torso for lean */}
+                          <div className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-success opacity-80 flex-none" /> {/* Head */}
+                          <div className="h-10 sm:h-8 w-4 sm:w-4 rounded-full bg-success opacity-80 flex-none" /> {/* Narrow torso for lean */}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground mt-2 text-center">Healthy</div>
