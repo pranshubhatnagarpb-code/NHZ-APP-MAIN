@@ -366,8 +366,8 @@ const PersonalizedDashboard = ({
               {/* Visual Comparison */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 px-1">
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base mb-3 sm:mb-4 margin-bottom-5">Comparison</h4>
-                  <div className="flex justify-center items-end gap-5 sm:gap-8 h-24 sm:h-32 pt-2 sm:pt-3 mt-1 sm:mt-2">
+                  <h4 className="font-semibold text-foreground text-sm sm:text-base mb-3 sm:mb-4 margin-bottom-5">BMI Comparison</h4>
+                  <div className="flex justify-center items-end gap-5 sm:gap-8 h-24 sm:h-32 pt-4 sm:pt-3 mt-3 sm:mt-2">
                     {/* Current BMI Silhouette */}
                     <div className="flex flex-col items-center min-w-0">
                       <div className={`w-12 sm:w-16 h-20 sm:h-24 rounded-t-full border-2 sm:border-4 transition-all duration-300 ${
