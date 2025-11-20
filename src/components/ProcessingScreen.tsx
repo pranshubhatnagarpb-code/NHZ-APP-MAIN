@@ -67,13 +67,20 @@ const ProcessingScreen = ({ onComplete }: ProcessingScreenProps) => {
       <div className="max-w-md mx-auto w-full">
         <Card className="shadow-large border-0 bg-gradient-to-br from-primary/5 to-secondary/5">
           <CardContent className="p-8 text-center">
-            {/* Main Icon */}
+            {/* Main Icon with Spinner */}
             <div className="flex justify-center mb-6">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center animate-pulse">
-                  {steps[currentStep]?.icon}
+                {/* Spinner ring */}
+                <div className="w-20 h-20 rounded-full flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-4 border-primary/20 border-t-primary animate-spin"></div>
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+                  <div className="relative animate-pulse">
+                    {steps[currentStep]?.icon}
+                  </div>
                 </div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20 animate-ping"></div>
+                <div className="absolute -inset-2 rounded-full opacity-20">
+                  <div className="w-full h-full rounded-full bg-gradient-to-r from-primary to-secondary animate-ping"></div>
+                </div>
               </div>
             </div>
 

@@ -387,10 +387,10 @@ const PersonalizedDashboard = ({
                             'bg-success'
                           }`} /> {/* Head */}
                           <div className={`h-10 sm:h-8 rounded-full bg-current opacity-80 ${
-                            healthyData.currentBMI < 18.5 ? 'bg-red-600 w-3 sm:w-3' :
+                            healthyData.currentBMI < 18.5 ? 'bg-red-600 w-2 sm:w-3' :
                             healthyData.currentBMI > 24.9 ? 'bg-orange-600 w-6 sm:w-8' :
-                            'bg-success w-4 sm:w-4'
-                          }`} /> {/* Torso - conditionally sized: thin (low BMI), wide (high BMI), match healthy (normal) */}
+                            'bg-success w-3 sm:w-4'
+                          }`} /> {/* Torso - wider for fat, narrower for lean */}
                         </div>
                       </div>
                       <div className="text-xs text-muted-foreground mt-2 text-center">Current</div>

@@ -127,26 +127,6 @@
     @apply border-border;
   }
 
-  /* iOS responsive improvements */
-  html, body {
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* Use dynamic viewport height to avoid Safari 100vh issues */
-  @supports (height: 100svh) {
-    .min-h-screen {
-      min-height: 100svh !important;
-    }
-  }
-
-  /* Respect iOS safe areas (notch, home indicator) */
-  body {
-    padding-bottom: max(env(safe-area-inset-bottom), 0px);
-    padding-top: max(env(safe-area-inset-top), 0px);
-    padding-left: max(env(safe-area-inset-left), 0px);
-    padding-right: max(env(safe-area-inset-right), 0px);
-  }
-
   /* Mobile Responsiveness Improvements */
   @media (max-width: 768px) {
     /* Touch-friendly button sizing */
