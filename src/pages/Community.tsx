@@ -292,14 +292,14 @@ export default function Community() {
               href="https://chat.whatsapp.com/DZf2YjUlHn36DzJA5ZePtL"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white transition-all duration-300 hover:scale-105"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Join WhatsApp Community Free
             </a>
             <a
               href="/?action=quiz"
-              className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white transition-all duration-300 hover:scale-105"
             >
               Start Health Quiz
             </a>
