@@ -65,7 +65,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
               Nutrition Score & Report
             </span>
           </h1>
-          <div className="text-xl md:text-4xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md min-h-[8rem] flex items-center justify-center">
+          <div className="text-xl md:text-4xl mb-10 text-white/90 max-w-3xl mx-auto drop-shadow-md min-h-[8rem] flex items-center justify-center">
             <div className="w-full">
               <SequentialTypewriter
                 segments={[

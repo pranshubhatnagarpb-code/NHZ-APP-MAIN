@@ -20,19 +20,19 @@ const SupportSection = () => {
               <MessageCircle className="w-8 h-8 text-primary mx-auto mb-4" />
               <h3 className="font-semibold text-lg mb-2">WhatsApp Support</h3>
               <p className="text-muted-foreground text-sm mb-4">
-                Quick response within 2-4 hours
+                Quick response
               </p>
               <Button
                 asChild
                 className="w-full bg-primary hover:bg-green-700"
               >
                 <a
-                  href="https://wa.me/919884315705?text=Hi%20Dr.%20Kirti,%20I%20need%20support%20with%20my%20nutrition%20plan"
+                  href="https://wa.me/15558454163"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Chat with Dr. Kirti
+                  Chat with us
                 </a>
               </Button>
             </CardContent>

@@ -44,10 +44,10 @@ export default function Contact() {
     {
       icon: <MessageCircle className="w-6 h-6 text-primary" />,
       title: "WhatsApp",
-      description: "Quick response within 2-4 hours",
-      contact: "+91 9884315705",
+      description: "Quick response",
+      contact: "+1 5558454163",
       action: "Chat Now",
-      link: "https://wa.me/919884315705?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20nutrition%20services",
+      link: "https://wa.me/15558454163",
       primary: true
     },
     {
