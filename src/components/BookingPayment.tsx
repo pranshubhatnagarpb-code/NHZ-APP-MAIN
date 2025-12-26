@@ -46,9 +46,9 @@ const BookingPayment = ({ onBack, onSuccess }: BookingPaymentProps) => {
         description: "Your consultation is booked. Redirecting to WhatsApp...",
       });
 
-      // Open WhatsApp with Dr. Kirti Jain
+      // Open WhatsApp with Dt. Kirti Jain
       const whatsappMessage = encodeURIComponent(
-        "Hi Dr. Kirti, I've completed the health quiz and paid the registration fees and would like to join the community!"
+        "Hi Dt. Kirti, I've completed the health quiz and paid the registration fees and would like to join the community!"
       );
       
       setTimeout(() => {
@@ -70,7 +70,7 @@ const BookingPayment = ({ onBack, onSuccess }: BookingPaymentProps) => {
               Booking Confirmed!
             </h2>
             <p className="text-muted-foreground mb-6">
-              Your consultation with Dr. Kirti Jain has been successfully booked.
+              Your consultation with Dt. Kirti Jain has been successfully booked.
             </p>
             <div className="bg-muted/50 rounded-lg p-4 mb-6">
               <p className="text-sm">
@@ -105,7 +105,7 @@ const BookingPayment = ({ onBack, onSuccess }: BookingPaymentProps) => {
             Book Your Consultation
           </h1>
           <p className="text-muted-foreground">
-            Schedule your personalized nutrition consultation with Dr. Kirti Jain
+            Schedule your personalized nutrition consultation with Dt. Kirti Jain
           </p>
         </div>
 
@@ -208,7 +208,7 @@ const BookingPayment = ({ onBack, onSuccess }: BookingPaymentProps) => {
             <div className="mt-6 p-4 bg-primary/10 rounded-lg">
               <h4 className="font-semibold text-sm mb-2">What's Included:</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>✓ 45-minute consultation with Dr. Kirti Jain</li>
+                <li>✓ 45-minute consultation with Dt. Kirti Jain</li>
                 <li>✓ Personalized nutrition plan</li>
                 <li>✓ Meal timing recommendations</li>
                 <li>✓ Follow-up support via WhatsApp</li>

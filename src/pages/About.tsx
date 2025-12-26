@@ -87,7 +87,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Badge className="bg-white/20 text-white mb-4">
-                About Dr. Kirti Jain
+                About Dt. Kirti Jain
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight drop-shadow-lg">
                 Transforming Lives Through
@@ -97,7 +97,7 @@ export default function About() {
               </h1>
               <p className="text-xl mb-8 text-white/90 leading-relaxed drop-shadow-md">
                 With over 19 years of expertise in clinical nutrition and a passion for holistic wellness, 
-                Dr. Kirti Jain has helped thousands of individuals achieve their health goals through 
+                Dt. Kirti Jain has helped thousands of individuals achieve their health goals through 
                 personalized, sustainable nutrition strategies.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

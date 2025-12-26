@@ -133,7 +133,7 @@ const ProcessingScreen = ({ onComplete }: ProcessingScreenProps) => {
             {/* Fun Fact */}
             <div className="mt-8 p-4 bg-accent/10 rounded-lg">
               <p className="text-sm text-accent font-medium">
-                💡 Did you know? Dr. Kirti Jain has helped over 5,000 people 
+                💡 Did you know? Dt. Kirti Jain has helped over 5,000 people 
                 achieve their health goals with personalized nutrition plans!
               </p>
             </div>

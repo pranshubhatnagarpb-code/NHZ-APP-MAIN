@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "How does the personalized nutrition consultation work?",
-    answer: "After completing our comprehensive health quiz, you'll receive a detailed nutrition score and personalized report. Dr. Kirti Jain will then provide expert consultation based on your specific health profile, dietary preferences, and lifestyle. The consultation includes customized meal plans, supplement recommendations, and ongoing support."
+    answer: "After completing our comprehensive health quiz, you'll receive a detailed nutrition score and personalized report. Dt. Kirti Jain will then provide expert consultation based on your specific health profile, dietary preferences, and lifestyle. The consultation includes customized meal plans, supplement recommendations, and ongoing support."
   },
   {
     question: "What is included in the nutrition plan?",
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "Do you provide support for specific health conditions?",
-    answer: "Yes, Dr. Kirti Jain specializes in nutrition plans for various health conditions including diabetes, PCOS, thyroid disorders, high blood pressure, digestive issues, and weight management. Each plan is medically informed and tailored to your specific condition."
+    answer: "Yes, Dt. Kirti Jain specializes in nutrition plans for various health conditions including diabetes, PCOS, thyroid disorders, high blood pressure, digestive issues, and weight management. Each plan is medically informed and tailored to your specific condition."
   },
   {
     question: "How do I access my nutrition report and plan?",
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     question: "What if I have food allergies or dietary restrictions?",
-    answer: "Absolutely! Our health quiz includes detailed questions about food allergies, intolerances, and dietary preferences (vegetarian, vegan, Jain, etc.). Dr. Kirti will create a plan that works around your restrictions while ensuring you get all necessary nutrients."
+    answer: "Absolutely! Our health quiz includes detailed questions about food allergies, intolerances, and dietary preferences (vegetarian, vegan, Jain, etc.). Dt. Kirti will create a plan that works around your restrictions while ensuring you get all necessary nutrients."
   },
   {
     question: "How often should I have follow-up consultations?",

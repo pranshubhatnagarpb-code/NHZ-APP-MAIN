@@ -35,7 +35,7 @@ export default function Community() {
     {
       icon: <Zap className="w-6 h-6 text-primary" />,
       title: "Quick Q&A Sessions",
-      description: "Get quick answers to your nutrition questions from Dr. Kirti and experienced community members."
+      description: "Get quick answers to your nutrition questions from Dt. Kirti and experienced community members."
     },
     {
       icon: <Gift className="w-6 h-6 text-primary" />,
@@ -45,7 +45,7 @@ export default function Community() {
     {
       icon: <Clock className="w-6 h-6 text-primary" />,
       title: "Weekly Live Sessions",
-      description: "Join live Q&A sessions, cooking demonstrations, and health workshops with Dr. Kirti."
+      description: "Join live Q&A sessions, cooking demonstrations, and health workshops with Dt. Kirti."
     }
   ];
 
@@ -62,7 +62,7 @@ export default function Community() {
     },
     {
       name: "Anita Singh",
-      text: "Dr. Kirti's weekly live sessions are incredibly valuable. So much practical knowledge shared!",
+      text: "Dt. Kirti's weekly live sessions are incredibly valuable. So much practical knowledge shared!",
       role: "Community Member for 6 months"
     }
   ];
@@ -80,7 +80,7 @@ export default function Community() {
     "Keep discussions focused on nutrition and wellness",
     "No spam, promotions, or unrelated content",
     "Respect privacy - no sharing personal information",
-    "Follow Dr. Kirti's guidance for health advice"
+    "Follow Dt. Kirti's guidance for health advice"
   ];
 
   return (
@@ -99,7 +99,7 @@ export default function Community() {
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
             Connect with 2,500+ health enthusiasts, get daily nutrition tips, share recipes, 
-            and stay motivated on your wellness journey with Dr. Kirti Jain's expert guidance.
+            and stay motivated on your wellness journey with Dt. Kirti Jain's expert guidance.
           </p>
           
           <div size="lg" className="mt-6">

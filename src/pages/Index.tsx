@@ -291,7 +291,7 @@ const Index = () => {
               </h1>
               <p className="text-muted-foreground mb-6">
                 Your consultation is booked and you're now part of our exclusive WhatsApp community. 
-                Dr. Kirti Jain will contact you soon!
+                Dt. Kirti Jain will contact you soon!
               </p>
               <button 
                 onClick={handleBackToLanding}

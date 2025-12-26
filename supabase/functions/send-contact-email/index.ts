@@ -87,7 +87,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Saved inquiry to database:", inquiry.id);
 
-    // Send email to Dr. Kirti
+    // Send email to Dt. Kirti
     try {
       const adminEmail = await sendEmail(
         ["info@nutritionhaizaruri.com"],
@@ -124,9 +124,9 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p>If you need immediate assistance, please reach out to us on WhatsApp: <a href="https://wa.me/919884315705">+91 9884315705</a></p>
           
-          <p>Best regards,<br>Dr. Kirti Jain<br>Nutrition hai Zaruri</p>
+          <p>Best regards,<br>Dt. Kirti Jain<br>Nutrition hai Zaruri</p>
         `,
-        "Dr. Kirti Jain <onboarding@resend.dev>"
+        "Dt. Kirti Jain <onboarding@resend.dev>"
       );
       console.log("User confirmation email sent successfully:", userEmail.id);
     } catch (error) {

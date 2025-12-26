@@ -42,7 +42,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
     {
       icon: <Zap className="w-6 h-6 text-secondary" />,
       title: "Expert Consultation",
-      description: "Direct access to Dr. Kirti Jain's 19+ years of nutrition expertise"
+      description: "Direct access to Dt. Kirti Jain's 19+ years of nutrition expertise"
     },
     {
       icon: <Shield className="w-6 h-6 text-secondary" />,
@@ -71,7 +71,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 segments={[
                   "Hello!",
                   "Take our 10 min health quiz to get your personalised Nutrition score and Report",
-                  "Book your consultation with Dr. Kirti Jain to get expert nutrition advice"
+                  "Book your consultation with Dt. Kirti Jain to get expert nutrition advice"
                 ]}
                 className="text-xl md:text-4xl text-white/90 drop-shadow-md block text-center"
                 speed={100}
@@ -126,7 +126,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 Driven by nutrition science, Nutrition Hai Zaruri helps people transform their health
                 through practical, expert guidance. We believe that proper nutrition is not just about
                 eating right—it's about creating a sustainable lifestyle that brings lasting wellness.
-                With over 19 years of experience, Dr. Kirti Jain combines traditional wisdom with modern
+                With over 19 years of experience, Dt. Kirti Jain combines traditional wisdom with modern
                 nutrition science to help you achieve your health goals.
               </p>
               <div className="space-y-4">
@@ -143,12 +143,12 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
             </div>
             <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Meet Dr. Kirti Jain
+                Meet Dt. Kirti Jain
               </h3>
               <p className="text-muted-foreground mb-6">
                 Renowned Jaipur dietitian specializing in tailored Indian diets and holistic wellness.
                 Post Graduate (M.Hsc) in Food and Nutrition with over 19 years of experience.
-                Has interned at Choithram Hospital (Indore) and Dr. Ram Manohar Lohia Hospital (Delhi),
+                Has interned at Choithram Hospital (Indore) and Dt. Ram Manohar Lohia Hospital (Delhi),
                 and provided services at Pushpanjali Hospital (Agra).
               </p>
               <div className="grid grid-cols-2 gap-4 text-center">
@@ -187,7 +187,7 @@ const LandingPage = ({ onStartQuiz, onBookAppointment }: LandingPageProps) => {
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold text-lg mb-2">Expert Guidance</h3>
                 <p className="text-muted-foreground">
-                  Direct consultation with Dr. Kirti Jain for professional health and nutrition advice
+                  Direct consultation with Dt. Kirti Jain for professional health and nutrition advice
                 </p>
               </CardContent>
             </Card>

@@ -133,7 +133,7 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
           </div>
           <p className="text-muted-foreground">
             Complete your profile to receive your personalized nutrition score, 
-            detailed report, and expert tips from Dr. Kirti Jain.
+            detailed report, and expert tips from Dt. Kirti Jain.
           </p>
         </div>
 
@@ -213,7 +213,7 @@ const UserRegistration = ({ quizData, onComplete, onBack }: UserRegistrationProp
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>✓ Personalized nutrition score (0-100)</li>
                 <li>✓ Detailed health insights report</li>
-                <li>✓ Expert tips from Dr. Kirti Jain</li>
+                <li>✓ Expert tips from Dt. Kirti Jain</li>
                 <li>✓ Consultation booking access</li>
               </ul>
             </div>

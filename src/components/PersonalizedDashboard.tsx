@@ -436,7 +436,7 @@ const PersonalizedDashboard = ({
                       <Info className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                       <div className="text-xs text-blue-800 leading-relaxed break-words">
                         <p className="font-medium mb-1">Important Note:</p>
-                        <p>BMI is a general indicator. Consult Dr. Kirti Jain for personalized health assessment considering muscle mass, bone density, and overall body composition.</p>
+                        <p>BMI is a general indicator. Consult Dt. Kirti Jain for personalized health assessment considering muscle mass, bone density, and overall body composition.</p>
                       </div>
                     </div>
                   </div>
@@ -541,7 +541,7 @@ const PersonalizedDashboard = ({
                     <div className="flex-1">
                       <h4 className="font-semibold mb-1">Complete Your Booking</h4>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Your consultation slot is reserved! Complete payment to confirm your appointment with Dr. Kirti Jain.
+                        Your consultation slot is reserved! Complete payment to confirm your appointment with Dt. Kirti Jain.
                       </p>
                       <Button 
                         onClick={onBookConsultation}
@@ -566,7 +566,7 @@ const PersonalizedDashboard = ({
                 <Calendar className="w-10 sm:w-12 h-10 sm:h-12 text-primary mx-auto mb-3 sm:mb-4" />
                 <h3 className="text-lg sm:text-xl font-bold mb-2 leading-tight">Book Personal Consultation</h3>
                 <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
-                  Get detailed guidance from Dr. Kirti Jain with a personalized nutrition plan
+                  Get detailed guidance from Dt. Kirti Jain with a personalized nutrition plan
                 </p>
                 <Button
                   onClick={onBookConsultation}
@@ -599,7 +599,7 @@ const PersonalizedDashboard = ({
         <div className="text-center mt-6 sm:mt-8 px-2">
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             This report is generated based on your responses. For detailed medical advice,
-            consult with Dr. Kirti Jain directly.
+            consult with Dt. Kirti Jain directly.
           </p>
         </div>
       </div>

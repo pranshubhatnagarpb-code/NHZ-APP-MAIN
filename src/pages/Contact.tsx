@@ -183,7 +183,7 @@ export default function Contact() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto drop-shadow-md">
-            Ready to take the next step? Get in touch with Dr. Kirti Jain for personalized 
+            Ready to take the next step? Get in touch with Dt. Kirti Jain for personalized 
             nutrition guidance and start your journey to better health today.
           </p>
         </div>

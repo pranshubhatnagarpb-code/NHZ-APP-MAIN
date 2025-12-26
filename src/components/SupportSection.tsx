@@ -10,7 +10,7 @@ const SupportSection = () => {
           Get in Touch with Nutrition Hai Zaruri
         </h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Connect with Dr. Kirti Jain and our nutrition experts for personalized guidance
+          Connect with Dt. Kirti Jain and our nutrition experts for personalized guidance
           on your health journey.
         </p>
 
@@ -68,7 +68,7 @@ const SupportSection = () => {
             <span className="font-medium">Nutrition Hai Zaruri - Jaipur</span>
           </div>
           <p className="text-sm text-primary">
-            Expert nutrition consultation and diet planning services by Dr. Kirti Jain
+            Expert nutrition consultation and diet planning services by Dt. Kirti Jain
           </p>
         </div>
       </div>
