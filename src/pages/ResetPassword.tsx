@@ -133,19 +133,23 @@ useEffect(() => {
       });
 
       if (updateError) {
-        setError(updateError.message || 'Failed to update password');
-        toast({
-          title: "Password update failed",
-          description: updateError.message || 'Failed to update password',
-          variant: "destructive"
-        });
-      } else {
-        toast({
-          title: "Password updated!",
-          description: "Your password has been successfully updated.",
-        });
-        navigate('/');
-      }
+  setError(updateError.message || 'Failed to update password');
+  toast({
+    title: "Password update failed",
+    description: updateError.message || 'Failed to update password',
+    variant: "destructive"
+  });
+} else {
+  // Clear hash from URL and redirect
+  window.history.replaceState({}, document.title, window.location.pathname);
+  toast({
+    title: "Password updated!",
+    description: "Redirecting to login...",
+  });
+  setTimeout(() => {
+    navigate('/');  // or navigate('/login') if you have a login page
+  }, 1500);
+}
     } catch (err) {
       setError('An unexpected error occurred');
     } finally {
