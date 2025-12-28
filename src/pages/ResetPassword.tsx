@@ -49,27 +49,53 @@ export default function ResetPassword() {
   }, []);
 
   // Check for session on mount
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      console.log('ResetPassword: Checking session', { session: !!session, error });
-      if (error) {
-        console.error('Session error:', error);
-        setError('Unable to verify reset session. Please try again.');
-      } else if (session?.user) {
-        console.log('ResetPassword: Session found, setting user');
-        setSessionUser(session.user);
-        setUser(session.user); // Also set local user
-        setError(''); // Clear any previous error
+  // Replace the existing "Check for session on mount" useEffect with this
+useEffect(() => {
+  const checkSession = async () => {
+    // First check existing session
+    const { data: { session }, error } = await supabase.auth.getSession();
+    console.log('ResetPassword: Checking session', { session: !!session, error });
+    
+    if (error) {
+      console.error('Session error:', error);
+      setError('Unable to verify reset session. Please try again.');
+    } else if (session?.user) {
+      console.log('ResetPassword: Session found, setting user');
+      setSessionUser(session.user);
+      setUser(session.user);
+      setError('');
+    } else {
+      // NO SESSION - check for hash token and process it
+      const hash = window.location.hash.slice(1); // Remove #
+      const urlParams = new URLSearchParams(hash);
+      const type = urlParams.get('type');
+      const access_token = urlParams.get('access_token');
+      
+      console.log('ResetPassword: Checking hash', { type, hasAccessToken: !!access_token });
+      
+      if (type === 'recovery' && access_token) {
+        // Exchange hash token for session
+        const { data, error: exchangeError } = await supabase.auth.exchangeCodeForSession(access_token);
+        if (exchangeError) {
+          console.error('Token exchange failed:', exchangeError);
+          setError('Invalid or expired reset link. Please request a new one.');
+        } else if (data.session?.user) {
+          console.log('ResetPassword: Token exchanged, user set');
+          setSessionUser(data.session.user);
+          setUser(data.session.user);
+          setError('');
+        }
       } else {
-        console.log('ResetPassword: No session found');
+        console.log('ResetPassword: No recovery token in hash');
         setError('Invalid or expired reset link. Please request a new password reset.');
       }
-      setIsCheckingSession(false);
-    };
+    }
+    setIsCheckingSession(false);
+  };
 
-    checkSession();
-  }, []);
+  checkSession();
+}, []);
+
 
   const handlePasswordUpdate = async () => {
     const currentUser = user || sessionUser;
